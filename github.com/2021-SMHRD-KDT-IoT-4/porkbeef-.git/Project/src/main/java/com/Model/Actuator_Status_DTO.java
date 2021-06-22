@@ -27,26 +27,21 @@ public class Actuator_Status_DTO {        //센서상태
 		return act_feed;
 	}
 
-
 	public void setAct_feed(int act_feed) {
 		this.act_feed = act_feed;
 	}
-
 
 	public int getAct_door() {
 		return act_door;
 	}
 
-
 	public void setAct_door(int act_door) {
 		this.act_door = act_door;
 	}
 
-
 	public int getAct_absor() {
 		return act_absor;
 	}
-
 
 	public void setAct_absor(int act_absor) {
 		this.act_absor = act_absor;
