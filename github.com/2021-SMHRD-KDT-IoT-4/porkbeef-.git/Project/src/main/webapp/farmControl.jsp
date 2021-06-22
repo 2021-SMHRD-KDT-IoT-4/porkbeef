@@ -47,7 +47,7 @@
                 <div class="container">
                     <div class="row no-collapse-1">
                         <form class="4u" action="#">
-                            <a href="#" class="image featured"><img src="images/pic01.jpg" alt=""></a>
+                            <a href="#" class="image featured"><img src="images/pic01.png" alt=""></a>
                             <div class="box">
                                 <h1>사료주기</h1>
                                 <br>
@@ -57,7 +57,7 @@
                         </form>
 
                         <form class="4u" action="#">
-                            <a href="#" class="image featured"><img src="images/pic02.jpg" alt=""></a>
+                            <a href="#" class="image featured"><img src="images/pic02.png" alt=""></a>
                             <div class="box">
                                 <h1>축사문 개폐</h1>
                                  <br>
@@ -66,7 +66,7 @@
                         </form>
 
                         <form class="4u" action="#">
-                            <a href="#" class="image featured"><img src="images/pic03.jpg" alt=""></a>
+                            <a href="#" class="image featured"><img src="images/pic03.png" alt=""></a>
                             <div class="box">
                                 <h1>흡배기 동작/정지</h1>
                                 <br>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="row no-collapse-1">
                         <form class="4u" action="#">
-                            <a href="#" class="image featured"><img src="images/pic01.jpg" alt=""></a>
+                            <a href="#" class="image featured"><img src="images/pic01.png" alt=""></a>
                             <div class="box">
                                 <h1>에어컨 동작/정지</h1>
                                 <br>
@@ -85,7 +85,7 @@
                         </form>
 
                         <form class="4u" action="#">
-                            <a href="#" class="image featured"><img src="images/pic02.jpg" alt=""></a>
+                            <a href="#" class="image featured"><img src="images/pic02.png" alt=""></a>
                             <div class="box">
                                 <h1>펌프 동작/정지</h1>
                                 <br>
@@ -94,7 +94,7 @@
                         </form>
 
                         <form class="4u" action="#">
-                            <a href="#" class="image featured"><img src="images/pic03.jpg" alt=""></a>
+                            <a href="#" class="image featured"><img src="images/pic03.png" alt=""></a>
                             <div class="box">
                                 <h1>보일러 동작/정지</h1>
                                 <br>
@@ -110,7 +110,7 @@
                         </section>
 
                         <form class="4u" action="#">
-                            <a href="#" class="image featured"><img src="images/pic02.jpg" alt=""></a>
+                            <a href="#" class="image featured"><img src="images/pic02.png" alt=""></a>
                             <div class="box">
                                 <h1>가습기 동작/정지</h1>
                                 <br>
