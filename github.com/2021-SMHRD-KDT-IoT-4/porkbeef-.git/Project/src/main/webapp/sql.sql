@@ -6,7 +6,6 @@ PASS = pig
 create user pigManage identified by pig;
 grant connect, resource, dba to pigManage;
 
-
 -- pigmanage 로그인 후 테이블 생성
 create table entire_environment(
     seq_num NUMBER primary key,
