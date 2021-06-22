@@ -1,3 +1,7 @@
+-- 접속 계정
+ID = pigManage
+PASS = pig
+
 -- 시스템 계정 로그인, 계정생성
 create user pigManage identified by pig;
 grant connect, resource, dba to pigManage;

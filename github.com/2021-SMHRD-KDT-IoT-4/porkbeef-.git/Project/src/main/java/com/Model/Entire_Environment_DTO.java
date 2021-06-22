@@ -1,24 +1,15 @@
 package com.Model;
 
-public class Entire_Environment_DTO {       //전체 환경
+// 전체 환경
+public class Entire_Environment_DTO { 
 
-	
-	private int seq_num;           //번호
-	private String check_time;     //시간
-	private int temp;              //온도
-	private int humi;              //습도
-	private int gas;               //가스
-	
-	
-	public Entire_Environment_DTO(int seq_num, String check_time, int temp, int humi, int gas) {
-		super();
-		this.seq_num = seq_num;
-		this.check_time = check_time;
-		this.temp = temp;
-		this.humi = humi;
-		this.gas = gas;
-	}
+	private int seq_num; 		// 번호
+	private String check_time; 	// 시간
+	private int temp; 			// 온도
+	private int humi; 			// 습도
+	private int gas; 			// 가스
 
+/////////////////////////////////////////////////////////////////////////////////////////
 
 	public int getSeq_num() {
 		return seq_num;
@@ -59,9 +50,16 @@ public class Entire_Environment_DTO {       //전체 환경
 	public void setGas(int gas) {
 		this.gas = gas;
 	}
-	
-	
 
-	
-	
+/////////////////////////////////////////////////////////////////////////////////////////
+
+	public Entire_Environment_DTO(int seq_num, String check_time, int temp, int humi, int gas) {
+		super();
+		this.seq_num = seq_num;
+		this.check_time = check_time;
+		this.temp = temp;
+		this.humi = humi;
+		this.gas = gas;
+	}
+
 }

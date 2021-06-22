@@ -3,15 +3,15 @@ package com.Model;
 // 자동제어관련
 public class Automatic_Control_DTO {
 
-	private String feed_time = null; // 밥줄시간
-	private int absor_start = 0; // 흡배기 시작 농도
-	private int absor_stop = 0; // 흡배기 정지 농도
-	private int aircon_start = 0; // 에어컨
-	private int aircon_stop = 0; // 에어컨 정지 온도
-	private int humid_start = 0; // 가습기 시작 습도
-	private int humid_stop = 0; // 가습기 정지 습도
-	private int boil_start = 0; // 보일러 시작 온도
-	private int boil_stop = 0; // 보일러 정지 온도
+	private String feed_time = null; 	// 밥줄시간
+	private int absor_start = 0; 		// 흡배기 시작 농도
+	private int absor_stop = 0; 		// 흡배기 정지 농도
+	private int aircon_start = 0; 		// 에어컨
+	private int aircon_stop = 0; 		// 에어컨 정지 온도
+	private int humid_start = 0;		// 가습기 시작 습도
+	private int humid_stop = 0;		 	// 가습기 정지 습도
+	private int boil_start = 0; 		// 보일러 시작 온도
+	private int boil_stop = 0; 			// 보일러 정지 온도
 
 /////////////////////////////////////////////////////////////////////////////////////////
 

@@ -2,14 +2,14 @@ package com.Model;
 
 public class Manual_Control_DTO {
 
-	private int act_feed = 0; // 밥통
-	private int act_door = 0; // 축사
-	private int act_absor = 0; // 흡배기
-	private int act_aircon = 0; // 에어컨
-	private int act_pump = 0; // 펌프
-	private int act_boil = 0; // 보일러
-	private int act_humid = 0; // 가습기
-	private int enableGrade = 0; // enableGrade(fk)
+	private int act_feed = 0;		// 밥통
+	private int act_door = 0; 		// 축사
+	private int act_absor = 0; 		// 흡배기
+	private int act_aircon = 0; 	// 에어컨
+	private int act_pump = 0; 		// 펌프
+	private int act_boil = 0; 		// 보일러
+	private int act_humid = 0; 		// 가습기
+	private int enableGrade = 0; 	// enableGrade(fk)
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
