@@ -82,8 +82,15 @@ public class Manual_Control_DAO {
 		try {
 			conn();
 			
-			String sql = "update Manual_Control set " + "act_feed = ?," + "act_door = ?," + "act_absor = ?,"
-					+ "act_aircon = ?," + "act_pump = ?," + "act_boil = ?," + "act_humid = ?"+"enableGrade = ?" + "where ROWNUM = 1";
+			String sql = "update Manual_Control set act_feed = ?," 
+						+ "act_door = ?," 
+						+ "act_absor = ?,"
+						+ "act_aircon = ?," 
+						+ "act_pump = ?," 
+						+ "act_boil = ?," 
+						+ "act_humid = ?,"
+						+ "enableGrade = ?" 
+						+ " where ROWNUM = 1";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, dto.getAct_feed());
 			psmt.setInt(2, dto.getAct_door());
