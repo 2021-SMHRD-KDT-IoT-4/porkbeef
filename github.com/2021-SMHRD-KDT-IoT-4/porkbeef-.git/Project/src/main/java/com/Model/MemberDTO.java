@@ -14,6 +14,12 @@ public class MemberDTO {
 		this.mb_grade = mb_grade;
 		this.nick_name = nick_name;
 	}
+	
+	public MemberDTO(String mb_id, String mb_pw) {
+		this.mb_id = mb_id;
+		this.mb_pw = mb_pw;
+	}
+	
 	public String getMb_id() {
 		return mb_id;
 	}

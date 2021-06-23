@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UserDAO {
 	Connection conn = null;
@@ -12,6 +13,8 @@ public class UserDAO {
 	ResultSet rs = null;
 	int cnt = 0;
 	MemberDTO dto = null;
+	private ArrayList<MemberDTO> dtos = null;
+
 
 	public void conn() {
 		try {
@@ -75,7 +78,7 @@ public class UserDAO {
 
 			if (rs.next()) {
 				String id = rs.getString("mb_id");
-				String pw = rs.getString("mb_id");
+				String pw = rs.getString("mb_pw");
 				int grade = Integer.parseInt(rs.getString("grade"));
 				String nick = rs.getString("nick_name");
 				dto = new MemberDTO(id, pw, grade, nick);
@@ -125,6 +128,34 @@ public class UserDAO {
 			close();
 		}
 		return cnt;
+	}
+	
+	public ArrayList<MemberDTO> getAllMember(){
+		dtos = new ArrayList<MemberDTO>();
+		
+		conn();
+		try {
+			String sql = "select * from member";
+
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				String id = rs.getString("mb_id");
+				String pw = rs.getString("mb_pw");
+				int grade = Integer.parseInt(rs.getString("grade"));
+				String nick = rs.getString("nick_name");
+				dto = new MemberDTO(id, pw, grade, nick);
+				dtos.add(dto);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return dtos;
 	}
 
 }

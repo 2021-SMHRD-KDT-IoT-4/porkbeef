@@ -10,4 +10,10 @@ public interface Command {
 
 	
 	public void command(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException;
+	
+	
+	
+	
+	
+	
 }
