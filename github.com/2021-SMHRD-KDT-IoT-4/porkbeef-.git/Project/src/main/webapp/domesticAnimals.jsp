@@ -41,7 +41,7 @@
 	<div class="wrapper style1">
 				<!-- Page -->
 				<div id="page" class="container">
-							<h2 align="center">회원관리페이지</h2>
+							<h2 align="center">동물관리페이지</h2>
 					<table align = "center" class="table">
 							<br><br>
 							<tr border="3px" class="tr">
