@@ -23,13 +23,13 @@
                             
          <style>
 			.table{
-				border:1px solid gray !important ;
+				border:1px solid black !important ;
 			}
 			.tr{
-				border:1px solid gray !important;
+				border:1px solid black !important;
 			}
 			.td{
-				border:1px solid gray !important;
+				border:1px solid black !important;
 			}
 			
 		</style>   
@@ -56,20 +56,18 @@
 				<!-- Banner -->
 					<div id="banner" class="container">
 						<section>
-							<p>회원관리</p>
+							<p style = "font-size:35px; font-family:'휴먼둥근헤드라인'; border:1px dashed white">☞회원관리☜</p>
 						</section>
 					</div>
 
 				<!-- Extra -->
-					<div class="wrapper style1">
-				<!-- Page -->
-					<div id="page" class="container">
+					<div class="wrapper style2">
 						<form action="#" align = "right">
 							<table class = "table">
 								<tr class ="tr">
-									<td class = "td" align = "center">ID</td>
-									<td class = "td" align = "center">NICKNAME</td>
-									<td class = "td" align = "center">GRADE</td>
+									<td class = "td" align = "center">아이디</td>
+									<td class = "td" align = "center">닉네임</td>
+									<td class = "td" align = "center">등급</td>
 								</tr>
 								
 								<tr class = "tr">
@@ -89,8 +87,8 @@
 						   <input type="submit" value = "저장">
 							
 						</form>
-					</div>
-				<!-- /Page -->
+						</div>
+				
 	</div>
 	<div class="wrapper style1"></div>
 		
