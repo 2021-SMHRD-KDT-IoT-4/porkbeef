@@ -5,14 +5,25 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UserDAO {
+<<<<<<< HEAD
 	
 	private Connection connetion = null;
 	private PreparedStatement prepar_statement = null;
 	private ResultSet result_set = null;
 	private int cnt = 0;
 	private MemberDTO dto = null;
+=======
+	Connection conn = null;
+	PreparedStatement psmt = null;
+	ResultSet rs = null;
+	int cnt = 0;
+	MemberDTO dto = null;
+	private ArrayList<MemberDTO> dtos = null;
+
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-IoT-4/porkbeef-.git
 
 	public void UserDAO_Connetion() {
 
@@ -88,11 +99,19 @@ public class UserDAO {
 
 			result_set = prepar_statement.executeQuery();
 
+<<<<<<< HEAD
 			if (result_set.next()) {
 				String id = result_set.getString("mb_id");
 				String pw = result_set.getString("mb_id");
 				int grade = Integer.parseInt(result_set.getString("MB_GRADE"));
 				String nick = result_set.getString("nick_name");
+=======
+			if (rs.next()) {
+				String id = rs.getString("mb_id");
+				String pw = rs.getString("mb_pw");
+				int grade = Integer.parseInt(rs.getString("grade"));
+				String nick = rs.getString("nick_name");
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-IoT-4/porkbeef-.git
 				dto = new MemberDTO(id, pw, grade, nick);
 			}
 
@@ -144,4 +163,36 @@ public class UserDAO {
 		}
 		return cnt;
 	}
+<<<<<<< HEAD
+=======
+	
+	public ArrayList<MemberDTO> getAllMember(){
+		dtos = new ArrayList<MemberDTO>();
+		
+		conn();
+		try {
+			String sql = "select * from member";
+
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				String id = rs.getString("mb_id");
+				String pw = rs.getString("mb_pw");
+				int grade = Integer.parseInt(rs.getString("grade"));
+				String nick = rs.getString("nick_name");
+				dto = new MemberDTO(id, pw, grade, nick);
+				dtos.add(dto);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return dtos;
+	}
+
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-IoT-4/porkbeef-.git
 }

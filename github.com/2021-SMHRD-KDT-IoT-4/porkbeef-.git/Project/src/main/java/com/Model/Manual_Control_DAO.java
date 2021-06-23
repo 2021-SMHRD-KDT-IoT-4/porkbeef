@@ -54,7 +54,7 @@ public class Manual_Control_DAO {
 		}
 	}
 
-	public Manual_Control_DTO GetActuatorStatus() {
+	public Manual_Control_DTO GetManual() {
 
 		try {
 			Manual_Control_Connetion();
@@ -88,7 +88,7 @@ public class Manual_Control_DAO {
 
 	}
 
-	public int SetActuatorStatus(Manual_Control_DTO dto) {
+	public int SetManual(Manual_Control_DTO dto) {
 
 		try {
 			Manual_Control_Connetion();

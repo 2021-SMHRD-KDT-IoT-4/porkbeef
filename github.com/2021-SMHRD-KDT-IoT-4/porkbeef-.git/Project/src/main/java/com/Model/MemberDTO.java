@@ -2,6 +2,7 @@ package com.Model;
 
 public class MemberDTO {
 	
+<<<<<<< HEAD
 	private String mb_id; // 회원 아이디
 	private String mb_pw; // 회원 비밀번호
 	private int mb_grade; // 회원 등급
@@ -9,6 +10,22 @@ public class MemberDTO {
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
+=======
+	
+	public MemberDTO(String mb_id, String mb_pw, int mb_grade, String nick_name) {
+		super();
+		this.mb_id = mb_id;
+		this.mb_pw = mb_pw;
+		this.mb_grade = mb_grade;
+		this.nick_name = nick_name;
+	}
+	
+	public MemberDTO(String mb_id, String mb_pw) {
+		this.mb_id = mb_id;
+		this.mb_pw = mb_pw;
+	}
+	
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-IoT-4/porkbeef-.git
 	public String getMb_id() {
 		return mb_id;
 	}
