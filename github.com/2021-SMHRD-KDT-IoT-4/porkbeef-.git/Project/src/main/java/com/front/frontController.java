@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.controller.Command;
+
 
 @WebServlet("*.do")
 public class frontController extends HttpServlet {
@@ -17,7 +19,7 @@ public class frontController extends HttpServlet {
 		String path=request.getContextPath();
 		String resultURI=reqURI.substring(path.length()+1);
 		
-		//인터페이스 command의이름은 inter
+		//인터페이스 command의 이름은 inter
 		Command inter =null;
 		
 		if(resultURI.equals("")) {
