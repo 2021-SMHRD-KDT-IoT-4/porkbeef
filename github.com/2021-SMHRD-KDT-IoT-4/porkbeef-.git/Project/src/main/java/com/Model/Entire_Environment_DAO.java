@@ -13,13 +13,12 @@ public class Entire_Environment_DAO {
 	private PreparedStatement prepar_statement = null;
 	private ResultSet result_set = null;
 	private int state_Check = 0; // 성공여부 체크
-
 	private Entire_Environment_DTO environ_DTO = null;
 	private ArrayList<Entire_Environment_DTO> environ_DTO_list = null;
 
 	public void Environment_Connetion() {
 
-		String ip_number = "211.107.188.204";
+		String ip_number = "localhost";
 		String port_number = "1521";
 		String nick_name = "xe";
 		String oracle_id = "pigManage";

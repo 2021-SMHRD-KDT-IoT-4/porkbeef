@@ -81,7 +81,6 @@ public class Manual_Control_DTO {
 
 	public Manual_Control_DTO(int act_feed, int act_door, int act_absor, int act_aircon, int act_pump, int act_boil,
 			int act_humid, int enableGrade) {
-		super();
 		this.act_feed = act_feed;
 		this.act_door = act_door;
 		this.act_absor = act_absor;

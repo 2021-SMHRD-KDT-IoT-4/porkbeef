@@ -81,5 +81,4 @@ public class Actuator_Status_DTO {
 		this.act_boil = act_boil;
 		this.act_humid = act_humid;
 	}
-
 }

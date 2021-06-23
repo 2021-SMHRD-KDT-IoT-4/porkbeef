@@ -13,13 +13,12 @@ public class Automatic_Control_DAO {
 	private PreparedStatement prepar_statement = null;
 	private ResultSet result_set = null;
 	private int state_Check = 0; // 성공여부 체크
-	
 
 	private Automatic_Control_DTO automatic_DTO = null;
-	
+
 	public void Automatic_Connetion() {
 
-		String ip_number = "211.107.188.204";
+		String ip_number = "localhost";
 		String port_number = "1521";
 		String nick_name = "xe";
 		String oracle_id = "pigManage";
@@ -63,7 +62,7 @@ public class Automatic_Control_DAO {
 			prepar_statement.setInt(7, automatic_dto.getHumid_stop());
 			prepar_statement.setInt(8, automatic_dto.getBoil_start());
 			prepar_statement.setInt(9, automatic_dto.getBoil_stop());
-			
+
 //			String feed_time = null; 	// 밥줄시간
 //			int absor_start = 0; 		// 흡배기 시작 농도
 //			int absor_stop = 0; 		// 흡배기 정지 농도
@@ -73,7 +72,7 @@ public class Automatic_Control_DAO {
 //			nt humid_stop = 0;		 	// 가습기 정지 습도
 //			int boil_start = 0; 		// 보일러 시작 온도
 //			int boil_stop = 0; 			// 보일러 정지 온도
-			
+
 			state_Check = prepar_statement.executeUpdate();
 
 		} catch (SQLException e) {
@@ -131,11 +130,10 @@ public class Automatic_Control_DAO {
 				System.out.println(humid_stop);
 				System.out.println(boil_start);
 				System.out.println(boil_stop);
-				
-				automatic_DTO = new Automatic_Control_DTO(feed_time, absor_start, absor_stop, aircon_start, 
-						aircon_stop, humid_start, humid_stop, boil_start, boil_stop);
 
-			
+				automatic_DTO = new Automatic_Control_DTO(feed_time, absor_start, absor_stop, aircon_start, aircon_stop,
+						humid_start, humid_stop, boil_start, boil_stop);
+
 			}
 
 		} catch (SQLException e) {

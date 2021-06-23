@@ -8,6 +8,5 @@ import javax.servlet.http.HttpServletResponse;
 
 public interface Command {
 
-	
-	public void command(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException;
+	public void command(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

@@ -8,25 +8,33 @@ import java.sql.SQLException;
 
 public class Domestic_AnimalsDAO {
 
-	Connection conn = null;
-	PreparedStatement psmt = null;
-	int cnt = 0;
-	ResultSet rs = null;
-	Domestic_AnimalsDTO[] info = null;
+	private Connection conn = null;
+	private PreparedStatement psmt = null;
+	private int cnt = 0;
+	private ResultSet rs = null;
+	private Domestic_AnimalsDTO[] info = null;
 
-	public void conn() {
+	public void Domestic_Animals_Connetion() {
+
+		String ip_number = "localhost";
+		String port_number = "1521";
+		String nick_name = "xe";
+		String oracle_id = "pigManage";
+		String oracle_password = "pig";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			String db_url = "jdbc:oracle:thin:@211.107.188.204:1521:xe";
-			String db_id = "pigManage";
-			String db_pw = "pig";
+			String path = "jdbc:oracle:thin:@" + ip_number + ":" + port_number + ":" + nick_name;
 
-			conn = DriverManager.getConnection(db_url, db_id, db_pw);
+			conn = DriverManager.getConnection(path, oracle_id, oracle_password);
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+			System.out.println("Domestic_AnimalsDAO에서 Domestic_Animals_Connetion ClassNotFoundException에러");
+		} catch (SQLException e) {
+//			e.printStackTrace();
+			System.out.println("Domestic_AnimalsDAO에서 Domestic_Animals_Connetion SQLException 에러");
 		}
 	}
 
@@ -49,6 +57,7 @@ public class Domestic_AnimalsDAO {
 
 	public int update(Domestic_AnimalsDTO dto) {
 		try {
+			Domestic_Animals_Connetion();
 			String sql = "update domestic_animals product_cnt = ?, receving_date = ?, forwarding_date = ?, fir_vaccine = ?, sec_vaccine = ?, thr_vaccine = ?, enableGrade = ? where room = ?";
 			psmt = conn.prepareStatement(sql);
 
@@ -71,9 +80,11 @@ public class Domestic_AnimalsDAO {
 		return cnt;
 	}
 
+	// 정보 받아오기 배열로 사용
 	public Domestic_AnimalsDTO[] getinfo(Domestic_AnimalsDTO dto) {
 		try {
-			String sql = "select * from domestic_animals"; 
+			Domestic_Animals_Connetion();
+			String sql = "select * from domestic_animals";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, cnt);
 			rs = psmt.executeQuery();
@@ -89,8 +100,8 @@ public class Domestic_AnimalsDAO {
 				String thr_vaccine = rs.getString("thr_vaccine");
 				int enableGrade = rs.getInt("enableGrade");
 
-				
-				info[i] = new Domestic_AnimalsDTO(room, product_cnt, receving_date, forwarding_date, fir_vaccine, sec_vaccine, thr_vaccine, enableGrade);
+				info[i] = new Domestic_AnimalsDTO(room, product_cnt, receving_date, forwarding_date, fir_vaccine,
+						sec_vaccine, thr_vaccine, enableGrade);
 				i++;
 			}
 		} catch (SQLException e) {
@@ -101,5 +112,4 @@ public class Domestic_AnimalsDAO {
 		return info;
 
 	}
-
 }

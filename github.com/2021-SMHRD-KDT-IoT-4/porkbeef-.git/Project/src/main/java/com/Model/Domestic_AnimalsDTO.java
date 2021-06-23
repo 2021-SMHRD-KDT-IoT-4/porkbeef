@@ -1,6 +1,7 @@
 package com.Model;
 
 public class Domestic_AnimalsDTO {
+	
 	private int room; 				// 방번호
 	private int product_cnt; 		// 개체수
 	private String receving_date; 	// 입고날짜

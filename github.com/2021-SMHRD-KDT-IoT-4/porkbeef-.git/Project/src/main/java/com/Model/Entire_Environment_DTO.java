@@ -54,12 +54,10 @@ public class Entire_Environment_DTO {
 /////////////////////////////////////////////////////////////////////////////////////////
 
 	public Entire_Environment_DTO(int seq_num, String check_time, int temp, int humi, int gas) {
-		super();
 		this.seq_num = seq_num;
 		this.check_time = check_time;
 		this.temp = temp;
 		this.humi = humi;
 		this.gas = gas;
 	}
-
 }
