@@ -1,6 +1,6 @@
 package com.Model;
 
-public class Domestic_AnimalDTO {
+public class Domestic_AnimalsDTO {
 	private int room; 				// 방번호
 	private int product_cnt; 		// 개체수
 	private String receving_date; 	// 입고날짜
@@ -78,7 +78,7 @@ public class Domestic_AnimalDTO {
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
-	public Domestic_AnimalDTO(int room, int product_cnt, String receving_date, String forwarding_date,
+	public Domestic_AnimalsDTO(int room, int product_cnt, String receving_date, String forwarding_date,
 			String fir_vaccine, String sec_vaccine, String thr_vaccine, int enableGrade) {
 		this.room = room;
 		this.product_cnt = product_cnt;

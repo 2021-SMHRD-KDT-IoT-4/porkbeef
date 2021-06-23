@@ -11,7 +11,7 @@ public class UserDAO {
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
 	int cnt = 0;
-	String Mb_id = null;
+	MemberDTO dto = null;
 
 	public void conn() {
 		try {
@@ -42,9 +42,7 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
+
 	public int userJoin(MemberDTO dto) {
 		conn();
 		try {
@@ -52,9 +50,9 @@ public class UserDAO {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getMb_id());
 			psmt.setString(2, dto.getMb_pw());
-			psmt.setString(3, dto.getNickname());
+			psmt.setString(3, dto.getNick_name());
 			cnt = psmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -63,10 +61,10 @@ public class UserDAO {
 		return cnt;
 	}
 
-	public String userLogin(MemberDTO dto) {
+	public MemberDTO userLogin(MemberDTO dto) {
 		conn();
 		try {
-			String sql = "select id from member where id = ? and pw =?";
+			String sql = "select * from member where mb_id = ? and mb_pw =?";
 
 			psmt = conn.prepareStatement(sql);
 
@@ -76,7 +74,11 @@ public class UserDAO {
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				Mb_id = rs.getString(1);
+				String id = rs.getString("mb_id");
+				String pw = rs.getString("mb_id");
+				int grade = Integer.parseInt(rs.getString("grade"));
+				String nick = rs.getString("nick_name");
+				dto = new MemberDTO(id, pw, grade, nick);
 			}
 
 		} catch (SQLException e) {
@@ -84,20 +86,21 @@ public class UserDAO {
 		} finally {
 			close();
 		}
-		return Mb_id;
+		return dto;
 
 	}
+
 	public int userUpdate(MemberDTO dto) {
 		conn();
-		String sql = "update member set grade = ? where id = ?";
+		String sql = "update member set grade = ? where mb_id = ?";
 		try {
 			psmt = conn.prepareStatement(sql);
-			
+
 			psmt.setString(1, dto.getMb_id());
 			psmt.setInt(1, dto.getMb_grade());
 
-			rs = psmt.executeQuery();
-			
+			cnt = psmt.executeUpdate();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -105,17 +108,17 @@ public class UserDAO {
 		}
 		return cnt;
 	}
-	
+
 	public int userDelete(MemberDTO dto) {
 		conn();
-		String sql = "delete member where id = ?";
+		String sql = "delete member where mb_id = ?";
 		try {
 			psmt = conn.prepareStatement(sql);
-			
+
 			psmt.setString(1, dto.getMb_id());
 
-			rs = psmt.executeQuery();
-			
+			cnt = psmt.executeUpdate();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -124,5 +127,4 @@ public class UserDAO {
 		return cnt;
 	}
 
-	
 }

@@ -12,7 +12,7 @@ public class Domestic_AnimalsDAO {
 	PreparedStatement psmt = null;
 	int cnt = 0;
 	ResultSet rs = null;
-	Domestic_AnimalDTO[] info = null;
+	Domestic_AnimalsDTO[] info = null;
 
 	public void conn() {
 
@@ -47,7 +47,7 @@ public class Domestic_AnimalsDAO {
 		}
 	}
 
-	public int update(Domestic_AnimalDTO dto) {
+	public int update(Domestic_AnimalsDTO dto) {
 		try {
 			String sql = "update domestic_animals product_cnt = ?, receving_date = ?, forwarding_date = ?, fir_vaccine = ?, sec_vaccine = ?, thr_vaccine = ?, enableGrade = ? where room = ?";
 			psmt = conn.prepareStatement(sql);
@@ -71,13 +71,13 @@ public class Domestic_AnimalsDAO {
 		return cnt;
 	}
 
-	public Domestic_AnimalDTO[] getinfo(Domestic_AnimalDTO dto) {
+	public Domestic_AnimalsDTO[] getinfo(Domestic_AnimalsDTO dto) {
 		try {
 			String sql = "select * from domestic_animals"; 
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, cnt);
 			rs = psmt.executeQuery();
-			info = new Domestic_AnimalDTO[2];
+			info = new Domestic_AnimalsDTO[2];
 			int i = 0;
 			while (rs.next()) {
 				int room = rs.getInt("room");
@@ -90,7 +90,7 @@ public class Domestic_AnimalsDAO {
 				int enableGrade = rs.getInt("enableGrade");
 
 				
-				info[i] = new Domestic_AnimalDTO(room, product_cnt, receving_date, forwarding_date, fir_vaccine, sec_vaccine, thr_vaccine, enableGrade);
+				info[i] = new Domestic_AnimalsDTO(room, product_cnt, receving_date, forwarding_date, fir_vaccine, sec_vaccine, thr_vaccine, enableGrade);
 				i++;
 			}
 		} catch (SQLException e) {

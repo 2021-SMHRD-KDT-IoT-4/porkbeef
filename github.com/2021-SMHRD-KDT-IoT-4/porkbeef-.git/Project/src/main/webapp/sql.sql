@@ -7,7 +7,7 @@ create user pigManage identified by pig;
 grant connect, resource, dba to pigManage;
 
 -- pigmanage 로그인 후 테이블 생성
-create table entire_environment(
+create table entire_environment( --ㅇㅇ
     seq_num NUMBER primary key,
     check_time DATE,
     temp NUMBER NOT NULL,
@@ -21,7 +21,7 @@ CREATE SEQUENCE entire_seq_num
      MAXVALUE 10000
      NOCYCLE;
 
-create table domestic_animals(
+create table domestic_animals(--ㅇㅇ
     room NUMBER NOT NULL,
     product_cnt NUMBER NOT NULL,
     receving_date DATE,
@@ -32,14 +32,14 @@ create table domestic_animals(
     enableGrade NUMBER NOT NULL
 );
 
-create table Members(
+create table Members(--ㅇㅇ
     mb_id varchar2(32) primary key,
     mb_pw varchar2(32) NOT NULL,
     mb_grade NUMBER NOT NULL,
     nick_name varchar2(40) NOT NULL
 );
 
-create table actuator_status(
+create table actuator_status(--ㅇㅇ
     act_feed NUMBER NOT NULL,
     act_door NUMBER NOT NULL,
     act_absor NUMBER NOT NULL,
@@ -49,7 +49,12 @@ create table actuator_status(
     act_humid NUMBER NOT NULL
 );
 
-create table automatic_control(
+insert into actuator_status values(0,0,0,0,0,0,0);
+select * from actuator_status;
+update actuator_status set act_feed = 1,act_door = 1,
+act_absor = 1,act_aircon = 1,act_pump = 1,act_boil = 1,act_humid = 1 where ROWNUM = 1;
+
+create table automatic_control(--ㅇㅇ
     feed_time DATE,
     absor_start NUMBER NOT NULL,
     absor_stop NUMBER NOT NULL,
@@ -61,7 +66,7 @@ create table automatic_control(
     boil_stop NUMBER NOT NULL
 ); 
 
-create table manual_control(
+create table manual_control(--ㅇㅇ
     act_feed NUMBER NOT NULL,
     act_door NUMBER NOT NULL,
     act_absor NUMBER NOT NULL,
