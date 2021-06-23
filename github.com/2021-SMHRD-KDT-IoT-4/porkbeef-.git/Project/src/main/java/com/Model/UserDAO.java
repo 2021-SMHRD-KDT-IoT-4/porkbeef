@@ -8,10 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class UserDAO {
-	
-	private Connection connetion = null;
-	private PreparedStatement prepar_statement = null;
-	private ResultSet result_set = null;
+
+	private Connection conn = null;
+	private PreparedStatement psmt = null;
+	private ResultSet rs = null;
 	private int cnt = 0;
 	private MemberDTO dto = null;
 	private ArrayList<MemberDTO> dtos = null;
@@ -29,7 +29,7 @@ public class UserDAO {
 
 			String path = "jdbc:oracle:thin:@" + ip_number + ":" + port_number + ":" + nick_name;
 
-			connetion = DriverManager.getConnection(path, oracle_id, oracle_password);
+			conn = DriverManager.getConnection(path, oracle_id, oracle_password);
 
 		} catch (ClassNotFoundException e) {
 //			e.printStackTrace();
@@ -42,14 +42,14 @@ public class UserDAO {
 
 	public void close() {
 		try {
-			if (result_set != null) {
-				result_set.close();
+			if (rs != null) {
+				rs.close();
 			}
-			if (prepar_statement != null) {
-				prepar_statement.close();
+			if (psmt != null) {
+				psmt.close();
 			}
-			if (connetion != null) {
-				connetion.close();
+			if (conn != null) {
+				conn.close();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -57,16 +57,16 @@ public class UserDAO {
 	}
 
 	public int userJoin(MemberDTO dto) {
-		
+
 		try {
 			UserDAO_Connetion();
-			
+
 			String sql = "insert into MEMBERS values(?,?,?)";
-			prepar_statement = connetion.prepareStatement(sql);
-			prepar_statement.setString(1, dto.getMb_id());
-			prepar_statement.setString(2, dto.getMb_pw());
-			prepar_statement.setString(3, dto.getNick_name());
-			cnt = prepar_statement.executeUpdate();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dto.getMb_id());
+			psmt.setString(2, dto.getMb_pw());
+			psmt.setString(3, dto.getNick_name());
+			cnt = psmt.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -77,24 +77,24 @@ public class UserDAO {
 	}
 
 	public MemberDTO userLogin(MemberDTO dto) {
-		
+
 		try {
 			UserDAO_Connetion();
-			
+
 			String sql = "select * from MEMBERS where mb_id = ? and mb_pw =?";
 
-			prepar_statement = connetion.prepareStatement(sql);
+			psmt = conn.prepareStatement(sql);
 
-			prepar_statement.setString(1, dto.getMb_id());
-			prepar_statement.setString(2, dto.getMb_pw());
+			psmt.setString(1, dto.getMb_id());
+			psmt.setString(2, dto.getMb_pw());
 
-			result_set = prepar_statement.executeQuery();
+			rs = psmt.executeQuery();
 
-			if (result_set.next()) {
-				String id = result_set.getString("mb_id");
-				String pw = result_set.getString("mb_id");
-				int grade = Integer.parseInt(result_set.getString("MB_GRADE"));
-				String nick = result_set.getString("nick_name");
+			if (rs.next()) {
+				String id = rs.getString("mb_id");
+				String pw = rs.getString("mb_id");
+				int grade = Integer.parseInt(rs.getString("MB_GRADE"));
+				String nick = rs.getString("nick_name");
 				dto = new MemberDTO(id, pw, grade, nick);
 			}
 
@@ -107,17 +107,17 @@ public class UserDAO {
 	}
 
 	public int userUpdate(MemberDTO dto) {
-		
+
 		try {
 			UserDAO_Connetion();
-			
+
 			String sql = "update MEMBERS set grade = ? where mb_id = ?";
-			prepar_statement = connetion.prepareStatement(sql);
+			psmt = conn.prepareStatement(sql);
 
-			prepar_statement.setString(1, dto.getMb_id());
-			prepar_statement.setInt(1, dto.getMb_grade());
+			psmt.setString(1, dto.getMb_id());
+			psmt.setInt(1, dto.getMb_grade());
 
-			cnt = prepar_statement.executeUpdate();
+			cnt = psmt.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -128,16 +128,16 @@ public class UserDAO {
 	}
 
 	public int userDelete(MemberDTO dto) {
-		
+
 		try {
 			UserDAO_Connetion();
-			
+
 			String sql = "delete MEMBERS where mb_id = ?";
-			prepar_statement = connetion.prepareStatement(sql);
+			psmt = conn.prepareStatement(sql);
 
-			prepar_statement.setString(1, dto.getMb_id());
+			psmt.setString(1, dto.getMb_id());
 
-			cnt = prepar_statement.executeUpdate();
+			cnt = psmt.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -145,5 +145,33 @@ public class UserDAO {
 			close();
 		}
 		return cnt;
+	}
+
+	public ArrayList<MemberDTO> getAllMember() {
+		dtos = new ArrayList<MemberDTO>();
+
+		try {
+			UserDAO_Connetion();
+			String sql = "select * from member";
+
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				String id = rs.getString("mb_id");
+				String pw = rs.getString("mb_pw");
+				int grade = Integer.parseInt(rs.getString("grade"));
+				String nick = rs.getString("nick_name");
+				dto = new MemberDTO(id, pw, grade, nick);
+				dtos.add(dto);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return dtos;
 	}
 }
