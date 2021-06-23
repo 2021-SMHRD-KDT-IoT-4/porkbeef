@@ -14,7 +14,7 @@ public class Automatic_Control_DAO {
 	private ResultSet result_set = null;
 	private int state_Check = 0; // 성공여부 체크
 	
-	private ArrayList<Automatic_Control_DTO> automatic_DTO_list = null;
+
 	private Automatic_Control_DTO automatic_DTO = null;
 	
 	public void Automatic_Connetion() {
@@ -85,10 +85,9 @@ public class Automatic_Control_DAO {
 		return state_Check;
 	}
 
-	public ArrayList<Automatic_Control_DTO> Automatic_SRead() {
+	public Automatic_Control_DTO Automatic_SRead() {
 
-		automatic_DTO_list = new ArrayList<Automatic_Control_DTO>();
-
+		automatic_DTO = null;
 		try {
 
 			Automatic_Connetion();
@@ -99,7 +98,7 @@ public class Automatic_Control_DAO {
 
 			result_set = prepar_statement.executeQuery();
 
-			while (result_set.next()) {
+			if (result_set.next()) {
 
 //				변수 확인용 필요없으면 지우기			
 //				String feed_time = null; 	// 밥줄시간
@@ -136,7 +135,7 @@ public class Automatic_Control_DAO {
 				automatic_DTO = new Automatic_Control_DTO(feed_time, absor_start, absor_stop, aircon_start, 
 						aircon_stop, humid_start, humid_stop, boil_start, boil_stop);
 
-				automatic_DTO_list.add(automatic_DTO);
+			
 			}
 
 		} catch (SQLException e) {
@@ -146,7 +145,7 @@ public class Automatic_Control_DAO {
 			Automatic_Close();
 		}
 
-		return automatic_DTO_list;
+		return automatic_DTO;
 	}
 
 	public void Automatic_Close() {
