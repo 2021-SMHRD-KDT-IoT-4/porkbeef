@@ -61,11 +61,12 @@ public class UserDAO {
 		try {
 			UserDAO_Connetion();
 
-			String sql = "insert into Members values(?,?,?)";
+			String sql = "insert into Members values(?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getMb_id());
 			psmt.setString(2, dto.getMb_pw());
-			psmt.setString(3, dto.getNick_name());
+			psmt.setInt(3, dto.getMb_grade());
+			psmt.setString(4, dto.getNick_name());
 			cnt = psmt.executeUpdate();
 
 		} catch (SQLException e) {
