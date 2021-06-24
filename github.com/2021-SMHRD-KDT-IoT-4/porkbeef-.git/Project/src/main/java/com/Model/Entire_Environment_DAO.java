@@ -56,25 +56,11 @@ public class Entire_Environment_DAO {
 			
 			while (result_set.next()) {
 
-//				변수 확인용 필요없으면 지우기			
-//				int seq_num; // 번호
-//				String check_time; // 시간
-//				int temp; // 온도
-//				int humi; // 습도
-//				int gas; // 가스
-
 				int seq_num = result_set.getInt(1);
 				String check_time = result_set.getString(2);
 				int temp = result_set.getInt(3);
 				int humi = result_set.getInt(4);
 				int gas = result_set.getInt(5);
-
-				// 확인용 확인 후 지우기
-				System.out.println(seq_num);
-				System.out.println(check_time);
-				System.out.println(temp);
-				System.out.println(humi);
-				System.out.println(gas);
 
 				environ_DTO = new Entire_Environment_DTO(seq_num, check_time, temp, humi, gas);
 
