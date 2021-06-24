@@ -115,8 +115,8 @@ public class UserDAO {
 			String sql = "update Members set mb_grade = ? where mb_id = ?";
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setString(1, dto.getMb_id());
 			psmt.setInt(1, dto.getMb_grade());
+			psmt.setString(2, dto.getMb_id());
 
 			cnt = psmt.executeUpdate();
 

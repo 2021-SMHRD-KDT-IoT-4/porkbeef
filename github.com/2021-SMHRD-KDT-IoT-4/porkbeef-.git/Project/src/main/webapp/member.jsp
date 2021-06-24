@@ -1,3 +1,7 @@
+<%@page import="javax.swing.text.Document"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.Model.UserDAO"%>
+<%@page import="com.Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -35,6 +39,25 @@
 		</style>   
     </head>
 <body>
+
+	
+
+	<%
+		MemberDTO user = (MemberDTO)session.getAttribute("user");
+		/* int grade = 3; 
+		
+		if(user!= null){
+			grade = user.getMb_grade();
+		}
+		if(user == null){
+			response.sendRedirect("Login.jsp");
+		}else if(grade != 0){
+			response.sendRedirect("index.jsp");
+		}  */
+	%>
+	
+
+
 	<!-- Wrapper -->
 			<div class="wrapper style1">
 
@@ -47,6 +70,7 @@
 						<nav id="nav">
 							<ul>
 								<li><a href="left-sidebar.html">축사제어</a></li>
+								<li><a href="#">자동 제어</a></li>
 								<li><a href="right-sidebar.html">회원관리</a></li>
 								<li><a href="no-sidebar.html">돼지현황</a></li>
 							</ul>
@@ -56,37 +80,58 @@
 				<!-- Banner -->
 					<div id="banner" class="container">
 						<section>
-							<p style = "font-size:35px; font-family:'휴먼둥근헤드라인'; border:1px dashed white">☞회원관리☜</p>
+							<p style = "font-size:35px; font-family:'휴먼둥근헤드라인'; ">☞회원관리☜</p>
 						</section>
 					</div>
 
 				<!-- Extra -->
+				
 					<div class="wrapper style2">
-						<form action="#" align = "right">
+						
 							<table class = "table">
 								<tr class ="tr">
 									<td class = "td" align = "center">아이디</td>
 									<td class = "td" align = "center">닉네임</td>
 									<td class = "td" align = "center">등급</td>
+									<td class = "td" align = "center">등급선택</td>
+									<td class = "td" align = "center">수정</td>
 								</tr>
 								
-								<tr class = "tr">
-									<td class = "td" align = "center"></td>
-									<td class = "td" align = "center"></td>
-									<td class = "td" align = "center">
-										<select id = "grade" name = "grade">
-											<option value = "0">0</option>
-											<option value = "1">1</option>
-											<option value = "2">2</option>
-											<option value = "3">3</option>
-										</select>
-									</td>
-								</tr>
+								<%
+									UserDAO dao = new UserDAO();
+									ArrayList<MemberDTO> list = dao.getAllMember();
+								%>
+								
+								<%for(int i = 0; i < list.size() ; i++){ %>
+								<form action="updateMember.do" align = "right">
+									<tr class = "tr">
+										<td class = "td" align = "center"><%=list.get(i).getMb_id() %></td>
+										<td class = "td" align = "center"><%=list.get(i).getNick_name() %></td>
+										<td class = "td" align = "center"><%=list.get(i).getMb_grade() %></td>
+										<td class = "td" align = "center">
+											<select id = "grade" name = "mb_grade">
+												<option value = "none">====선택====</option>
+												<option value = "0">0</option>
+												<option value = "1">1</option>
+												<option value = "2">2</option>
+												<option value = "3">3</option>
+											</select>
+										</td >
+										<td class = "td" align = "center">
+											<input type = "submit" value = "등급 수정">
+										
+										</td>
+										<td>
+											<input type="hidden" name = "mb_id" value="<%=list.get(i).getMb_id()%>">
+										</td> 
+									</tr>
+								</form>
+								<%} %>
 							</table>
 							<br><br>
-						   <input type="submit" value = "저장">
+						   
 							
-						</form>
+					
 						</div>
 				
 	</div>

@@ -43,6 +43,10 @@ public class MemberDTO {
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
+	public MemberDTO(String mb_id,int mb_grade) {
+		this.mb_id = mb_id;
+		this.mb_grade = mb_grade;
+	}
 	public MemberDTO(String mb_id, String mb_pw) {
 		this.mb_id = mb_id;
 		this.mb_pw = mb_pw;
