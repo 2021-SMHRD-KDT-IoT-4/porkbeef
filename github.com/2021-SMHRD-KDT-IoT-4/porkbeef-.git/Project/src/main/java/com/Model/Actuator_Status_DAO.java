@@ -75,7 +75,6 @@ public class Actuator_Status_DAO {
 
 				dto = new Actuator_Status_DTO(act_feed, act_door, act_absor, act_aircon, 
 						act_pump, act_boil, act_humid);
-
 			}
 
 		} catch (SQLException e) {
@@ -84,7 +83,6 @@ public class Actuator_Status_DAO {
 			close();
 		}
 		return dto;
-
 	}
 
 	public int SetActuatorStatus(Actuator_Status_DTO dto) {
@@ -94,6 +92,7 @@ public class Actuator_Status_DAO {
 			
 			String sql = "update actuator_status set " + "act_feed = ?," + "act_door = ?," + "act_absor = ?,"
 					+ "act_aircon = ?," + "act_pump = ?," + "act_boil = ?," + "act_humid = ?" + "where ROWNUM = 1";
+			
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, dto.getAct_feed());
 			psmt.setInt(2, dto.getAct_door());

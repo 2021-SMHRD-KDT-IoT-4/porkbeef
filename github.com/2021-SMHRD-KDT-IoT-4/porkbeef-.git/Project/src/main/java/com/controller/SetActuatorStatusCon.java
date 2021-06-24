@@ -2,11 +2,9 @@ package com.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.Model.Actuator_Status_DAO;
 import com.Model.Actuator_Status_DTO;
 import com.Model.Manual_Control_DAO;
@@ -32,31 +30,37 @@ public class SetActuatorStatusCon implements Command {
 				act_boil, act_humid);
 
 		int differentAt = cmpStatus(now_Status, status);
+		
 		int cnt = dao.SetActuatorStatus(status);
+		
+		// 자동-수동제어
 		boolean rtn = false;
+		
 		if (cnt > 0) {
 			Manual_Control_DAO asDAO = new Manual_Control_DAO();
 			Manual_Control_DTO asDTO = asDAO.GetManual();
-			Manual_Control_DTO nextASDTO = changeASDTO(asDTO, cnt);
+			
+			Manual_Control_DTO nextASDTO = changeASDTO(asDTO, cnt); //cnt -> 기능선택번호
+			
 			int add = 0;
+			
 			while (asDAO.SetManual(nextASDTO) > 0) {
 				add++;
-				if (add > 10)break;
+				
+				if (add > 10)
+					break;
 			}
-			
-			if(add < 10) rtn = true;
-			
-		} else {
+
+			if (add < 10)
+				rtn = true;
 
 		}
-		PrintWriter out = response.getWriter();
 		
-	
+		PrintWriter out = response.getWriter();
+
 		out.print(rtn);
 
 	}
-
-	
 
 	private int cmpStatus(Actuator_Status_DTO a, Actuator_Status_DTO b) {
 
@@ -89,7 +93,9 @@ public class SetActuatorStatusCon implements Command {
 	}
 
 	private Manual_Control_DTO changeASDTO(Manual_Control_DTO dto, int num) {
+		
 		Manual_Control_DTO rtn = dto;
+		
 		if (num == 0)
 			rtn.setAct_feed(1);
 		if (num == 1)
@@ -107,6 +113,5 @@ public class SetActuatorStatusCon implements Command {
 
 		return rtn;
 	}
-
 
 }

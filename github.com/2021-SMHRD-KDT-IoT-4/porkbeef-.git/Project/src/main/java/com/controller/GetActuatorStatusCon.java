@@ -19,14 +19,6 @@ public class GetActuatorStatusCon implements Command {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("EUC-KR");
 
-//		int act_feed = Integer.parseInt(request.getParameter("act_feed")); 
-//		int act_door = Integer.parseInt(request.getParameter("act_door")); 
-//		int act_absor = Integer.parseInt(request.getParameter("act_absor")); 
-//		int act_aircon = Integer.parseInt(request.getParameter("act_aircon"));
-//		int act_pump = Integer.parseInt(request.getParameter("act_pump")); 
-//		int act_boil = Integer.parseInt(request.getParameter("act_boil"));
-//		int act_humid = Integer.parseInt(request.getParameter("act_humid")); 
-
 		Actuator_Status_DAO dao = new Actuator_Status_DAO();
 		Actuator_Status_DTO status = dao.GetActuatorStatus();
 
@@ -40,5 +32,4 @@ public class GetActuatorStatusCon implements Command {
 		response.sendRedirect("farmControl.jsp");
 
 	}
-
 }
