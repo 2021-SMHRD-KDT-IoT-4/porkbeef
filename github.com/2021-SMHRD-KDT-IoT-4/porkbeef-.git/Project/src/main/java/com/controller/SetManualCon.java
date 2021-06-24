@@ -4,23 +4,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.Model.Manual_Control_DAO;
 import com.Model.Manual_Control_DTO;
 
-/**
- * Servlet implementation class SetManualCon
- */
-@WebServlet("/SetManualCon")
-public class SetManualCon extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class SetManualCon implements Command {
 
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	@Override
+	public void command(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("EUC-KR");
 
 		int enablegrade = Integer.parseInt(request.getParameter("enablegrade"));

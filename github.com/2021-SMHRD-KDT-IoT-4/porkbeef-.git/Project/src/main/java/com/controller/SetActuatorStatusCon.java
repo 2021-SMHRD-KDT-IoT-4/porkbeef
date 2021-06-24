@@ -4,27 +4,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.Model.Actuator_Status_DAO;
 import com.Model.Actuator_Status_DTO;
 import com.Model.Manual_Control_DAO;
 import com.Model.Manual_Control_DTO;
 
-/**
- * Servlet implementation class SetActuatorStatusCon
- */
-@WebServlet("/SetActuatorStatusCon")
-public class SetActuatorStatusCon extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class SetActuatorStatusCon implements Command {
 
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	@Override
+	public void command(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("EUC-KR");
 
 		int act_feed = Integer.parseInt(request.getParameter("act_feed")); // π‰≈Î
@@ -62,9 +53,10 @@ public class SetActuatorStatusCon extends HttpServlet {
 		
 	
 		out.print(rtn);
-		
 
 	}
+
+	
 
 	private int cmpStatus(Actuator_Status_DTO a, Actuator_Status_DTO b) {
 
@@ -115,4 +107,6 @@ public class SetActuatorStatusCon extends HttpServlet {
 
 		return rtn;
 	}
+
+
 }
