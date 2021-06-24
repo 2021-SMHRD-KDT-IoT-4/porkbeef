@@ -26,11 +26,10 @@ public class UpdateMember implements Command {
 		
 		if (cnt > 0) {
 			System.out.println("회원정보 수정 성공!");
-			response.sendRedirect("index.jsp");
 		}else {
 			System.out.println("회원정보 수정 실패!");
-			response.sendRedirect("member.jsp");
 		}
+		response.sendRedirect("member.jsp");
 		
 	}
 

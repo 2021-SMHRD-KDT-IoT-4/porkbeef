@@ -19,6 +19,8 @@ public class Login implements Command {
 		String mb_id = request.getParameter("mb_id");
 		String mb_pw = request.getParameter("mb_pw");
 		
+		System.out.println("여기 도착함?");
+		
 		UserDAO dao = new UserDAO();
 		MemberDTO dto = new MemberDTO(mb_id, mb_pw);
 		
