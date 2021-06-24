@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.controller.Command;
+import com.controller.GetDomesticAnimals;
 import com.controller.Login;
 
 @WebServlet("*.do")
@@ -23,8 +24,8 @@ public class front_Controller extends HttpServlet {
 
 		if (result_URI.equals("Login.do")) {
 			_interface =new Login();
-		} else if (result_URI.equals("")) {
-
+		} else if (result_URI.equals("domesticAnimals.do")) {
+			_interface = new GetDomesticAnimals();
 		}
 
 		_interface.command(request, response);

@@ -15,7 +15,7 @@ public class Domestic_AnimalsDAO {
 	private Domestic_AnimalsDTO[] info = null;
 
 	public void Domestic_Animals_Connetion() {
-
+		System.out.println("가축 커넥션");
 		String ip_number = "localhost";
 		String port_number = "1521";
 		String nick_name = "xe";
@@ -73,6 +73,7 @@ public class Domestic_AnimalsDAO {
 			cnt = psmt.executeUpdate();
 
 		} catch (SQLException e) {
+			System.out.println("실패");
 			e.printStackTrace();
 		} finally {
 			close();
@@ -88,8 +89,10 @@ public class Domestic_AnimalsDAO {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			info = new Domestic_AnimalsDTO[2];
+			System.out.println("가축 커넥션 성공");
 			int i = 0;
 			while (rs.next()) {
+				System.out.println(i);
 				int room = rs.getInt("room");
 				int product_cnt = rs.getInt("product_cnt");
 				String receving_date = rs.getString("receving_date");
