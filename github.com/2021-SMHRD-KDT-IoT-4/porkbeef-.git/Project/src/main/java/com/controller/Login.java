@@ -29,7 +29,7 @@ public class Login implements Command {
 			HttpSession session = request.getSession();
 			System.out.println(user.getMb_id());
 			session.setAttribute("user", user);
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("getState.do");
 			
 		}else {
 			response.sendRedirect("Login.jsp");

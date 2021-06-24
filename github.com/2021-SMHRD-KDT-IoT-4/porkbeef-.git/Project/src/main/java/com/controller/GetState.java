@@ -12,37 +12,32 @@ import javax.servlet.http.HttpSession;
 import com.Model.Entire_Environment_DAO;
 import com.Model.Entire_Environment_DTO;
 
-public class GetState implements Command{
-	
-@Override
-public void command(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-			
-	
-				
-			request.setCharacterEncoding("EUC-KR"); //post방식 인코딩 
-			int seq_num = Integer.parseInt(request.getParameter("seq_num"));
-			String check_time = request.getParameter("temp");
-			int temp = Integer.parseInt(request.getParameter("temp"));
-			int humi =Integer.parseInt(request.getParameter("humi"));
-			int gas = Integer.parseInt(request.getParameter("gas"));
-			
-			Entire_Environment_DAO dao =new Entire_Environment_DAO();
-	
-			ArrayList<Entire_Environment_DTO> environ_DTO_list = dao.Environment_ARead();
-	
-			Entire_Environment_DTO entire_environment_DTO = environ_DTO_list.get(environ_DTO_list.size());
-			
+public class GetState implements Command {
 
-			if(entire_environment_DTO !=null ) {
-				System.out.println("조회 성공");
-				HttpSession session = request.getSession();
-				session.setAttribute("StateAllSelect",entire_environment_DTO);
-			}else {
+	@Override
+	public void command(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+		request.setCharacterEncoding("EUC-KR"); // post방식 인코딩
+
+		Entire_Environment_DAO dao = new Entire_Environment_DAO();
+
+		ArrayList<Entire_Environment_DTO> environ_DTO_list = dao.Environment_ARead();
+		
+		if(environ_DTO_list.size() !=0) {
+			Entire_Environment_DTO entire_environment_DTO = environ_DTO_list.get(environ_DTO_list.size());
+			HttpSession session = request.getSession();
+			if (entire_environment_DTO != null) {
+				System.out.println("조회 성공");				
+				session.setAttribute("StateAllSelect", entire_environment_DTO);
+			} else {
+				session.setAttribute("StateAllSelect", null);
 				System.out.println("조회 실패");
 			}
-			response.sendRedirect("index.jsp");
-	
-}
+		}
+		
+		response.sendRedirect("index.jsp");
+
+	}
 
 }

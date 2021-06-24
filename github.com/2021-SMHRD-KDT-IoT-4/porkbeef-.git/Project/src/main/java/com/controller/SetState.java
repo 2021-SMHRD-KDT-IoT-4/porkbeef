@@ -35,12 +35,6 @@ public class SetState  implements Command{
 		}else {
 			
 		}		
-		
-		
-		
-		
-		
-		
 	}
 	
 }

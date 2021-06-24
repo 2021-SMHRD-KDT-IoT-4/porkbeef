@@ -41,7 +41,7 @@ public class Entire_Environment_DAO {
 	}
 
 	public ArrayList<Entire_Environment_DTO> Environment_ARead() {
-
+	
 		environ_DTO_list = new ArrayList<Entire_Environment_DTO>();
 
 		try {
@@ -53,7 +53,7 @@ public class Entire_Environment_DAO {
 			prepar_statement = connetion.prepareStatement(sql);
 
 			result_set = prepar_statement.executeQuery();
-
+			
 			while (result_set.next()) {
 
 //				변수 확인용 필요없으면 지우기			
