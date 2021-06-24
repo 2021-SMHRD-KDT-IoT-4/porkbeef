@@ -22,7 +22,7 @@ public class GetMember implements Command {
 		
 		ArrayList<MemberDTO> allMember = dao.getAllMember();
 		
-		if (allMember.size() != 0) {
+		if (allMember != null) {
 			System.out.println("회원정보 전송 성공");
 			HttpSession session = request.getSession(); 
 	        session.setAttribute("allMember", allMember);

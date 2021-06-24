@@ -40,6 +40,7 @@
 						<nav id="nav">
 							<ul>
 								<li><a href="left-sidebar.html">축사 제어</a></li>
+								<li><a href="#">자동 제어</a></li>
 								<li><a href="right-sidebar.html">회원 관리</a></li>
 								<li><a href="no-sidebar.html">돼지 현황</a></li>
 							</ul>
