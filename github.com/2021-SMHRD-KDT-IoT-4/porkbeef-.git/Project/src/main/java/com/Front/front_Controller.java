@@ -29,9 +29,8 @@ public class front_Controller extends HttpServlet {
 			_interface = new GetDomesticAnimals();
 		} else if (result_URI.equals("updateMember.do")) {
 			_interface = new UpdateMember();
-
-			_interface.command(request, response);
 		}
-
+		_interface.command(request, response);
 	}
+
 }
