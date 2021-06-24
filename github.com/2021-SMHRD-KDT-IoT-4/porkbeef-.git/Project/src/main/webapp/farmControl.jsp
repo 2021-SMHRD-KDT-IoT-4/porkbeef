@@ -93,7 +93,7 @@
                                                     상태는 <%=actu_Status.getAct_door() %> 입니다.
                                                 </h1>
                                                 <br>
-                                                <input type="submit" value="동작">
+                                                <input type="button" id="act_door" value="동작">
                                                 <%} else{ %>
                                                 <h1>
                                                     상태 정보가 없습니다.
@@ -115,7 +115,7 @@
                                                     상태는 <%=actu_Status.getAct_absor() %> 입니다.
                                                 </h1>
                                                 <br>
-                                                <input type="submit" value="동작">
+                                                <input type="button" id="act_absor" value="동작">
                                                 <%} else{ %>
                                                 <h1>
                                                     상태 정보가 없습니다.
@@ -139,7 +139,7 @@
                                                     상태는 <%=actu_Status.getAct_aircon() %> 입니다.
                                                 </h1>
                                                 <br>
-                                                <input type="submit" value="동작">
+                                                <input type="button" id="act_aircon" value="동작">
                                                <%} else{ %>
                                                 <h1>
                                                     상태 정보가 없습니다.
@@ -161,7 +161,7 @@
                                                     상태는 <%=actu_Status.getAct_pump() %> 입니다.
                                                 </h1>
                                                 <br>
-                                                <input type="submit" value="동작">
+                                                <input type="button" id="act_pump" value="동작">
                                                 <%} else{ %>
                                                 <h1>
                                                     상태 정보가 없습니다.
@@ -183,7 +183,7 @@
                                                     상태는 <%=actu_Status.getAct_boil() %> 입니다.
                                                 </h1>
                                                 <br>
-                                                <input type="submit" value="동작">
+                                               <input type="button" id="act_boil" value="동작">
                                                 <%} else{ %>
                                                 <h1>
                                                     상태 정보가 없습니다.
@@ -211,7 +211,7 @@
                                                     상태는 <%=actu_Status.getAct_humid() %> 입니다.
                                                 </h1>
                                                 <br>
-                                                <input type="submit" value="동작">
+                                                <input type="button" id="act_humid" value="동작">
                                                 <%} else{ %>
                                                 <h1>
                                                     상태 정보가 없습니다.
