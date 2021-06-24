@@ -77,7 +77,7 @@ public class UserDAO {
 		return cnt;
 	}
 
-	public MemberDTO userLogin(MemberDTO dto) {
+	public MemberDTO userLogin(MemberDTO login_dto) {
 
 		try {
 			UserDAO_Connetion();
@@ -86,11 +86,13 @@ public class UserDAO {
 
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setString(1, dto.getMb_id());
-			psmt.setString(2, dto.getMb_pw());
-
+			psmt.setString(1, login_dto.getMb_id());
+			psmt.setString(2, login_dto.getMb_pw());
+			
+		
+			
 			rs = psmt.executeQuery();
-
+			System.out.println(rs.getRow());
 			if (rs.next()) {
 				String mb_id = rs.getString("mb_id");
 				String mb_pw = rs.getString("mb_pw");

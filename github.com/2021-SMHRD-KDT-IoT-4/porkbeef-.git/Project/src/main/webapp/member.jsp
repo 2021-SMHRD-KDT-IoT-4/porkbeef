@@ -44,16 +44,18 @@
 
 	<%
 		MemberDTO user = (MemberDTO)session.getAttribute("user");
-		/* int grade = 3; 
+		int grade = 3; 
 		
 		if(user!= null){
 			grade = user.getMb_grade();
+			System.out.print(user.getMb_id());
+			System.out.print(grade);
 		}
 		if(user == null){
 			response.sendRedirect("Login.jsp");
 		}else if(grade != 0){
 			response.sendRedirect("index.jsp");
-		}  */
+		}
 	%>
 	
 
@@ -64,7 +66,7 @@
 				<!-- Header -->
 					<div id="header" class="skel-panels-fixed">
 						<div id="logo">
-							<h1><a href="index.html">家 包府 蹬瘤</a></h1>
+							<h1><a href="Login.jsp">家 包府 蹬瘤</a></h1>
 							<span class="tag">by TEMPLATED</span>
 						</div>
 						<nav id="nav">

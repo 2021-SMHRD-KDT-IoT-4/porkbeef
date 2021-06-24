@@ -18,23 +18,24 @@ public class Login implements Command {
 		request.setCharacterEncoding("EUC-KR");
 		String mb_id = request.getParameter("mb_id");
 		String mb_pw = request.getParameter("mb_pw");
-		
-		System.out.println("여기 도착함?");
-		
+
 		UserDAO dao = new UserDAO();
 		MemberDTO dto = new MemberDTO(mb_id, mb_pw);
-		
+
 		MemberDTO user = dao.userLogin(dto);
-		
-		if(user != null ) {
-			System.out.println("로그인 성공");
-			
-			HttpSession session = request.getSession();  
-			session.setAttribute("user", user);  
+
+		if (user != null && user.getMb_grade() < 3) {
+
+			HttpSession session = request.getSession();
+			System.out.println(user.getMb_id());
+			session.setAttribute("user", user);
 			response.sendRedirect("index.jsp");
 			
-		} else {
-			response.sendRedirect("login.jsp");
+		}else {
+			response.sendRedirect("Login.jsp");
 		}
+		
+
+
 	}
 }
