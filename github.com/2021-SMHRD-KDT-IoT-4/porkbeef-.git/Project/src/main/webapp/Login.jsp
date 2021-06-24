@@ -23,16 +23,17 @@
 <body>
 	<div class="wrapper style1">
 				<!-- Page -->
-					<div id="page" class="container">
-						<form action="Login.do" method="post">
-						<input type="text" name ="id" placeholder="ID를 입력하세요">
-						<input type="password" name ="pw" placeholder="PW를 입력하세요">
-						<input type="submit" value="LogIn" class="button fit">
-						
-						
-							
-						</form>
-					</div>
+		<div id="page" class="container">
+			<form action="Login.do" method="post">
+				<input type="text" name ="id" placeholder="ID를 입력하세요">
+				<input type="password" name ="pw" placeholder="PW를 입력하세요">
+				<input type="submit" value="LogIn" class="button fit">
+				<div style="height: 30px"></div>
+				<input type="button" value="Join" class="button fit"
+				onClick="location.href='Join.jsp'">
+			</form>
+		</div>
+	</div>
 <div class="wrapper style1"></div>
 <div class="wrapper style1"></div>
 <div class="wrapper style1"></div>
