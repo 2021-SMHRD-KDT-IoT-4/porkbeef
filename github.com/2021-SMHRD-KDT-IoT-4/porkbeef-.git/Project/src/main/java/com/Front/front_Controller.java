@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.controller.Command;
+import com.controller.GetActuatorStatusCon;
 import com.controller.GetDomesticAnimals;
 import com.controller.Login;
 import com.controller.UpdateMember;
@@ -29,7 +30,11 @@ public class front_Controller extends HttpServlet {
 			_interface = new GetDomesticAnimals();
 		} else if (result_URI.equals("updateMember.do")) {
 			_interface = new UpdateMember();
+		}else if (result_URI.equals("farmControl.do")) {
+			_interface = new GetActuatorStatusCon();
 		}
+		
+		
 		_interface.command(request, response);
 	}
 
