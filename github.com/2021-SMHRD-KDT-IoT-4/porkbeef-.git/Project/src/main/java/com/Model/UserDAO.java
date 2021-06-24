@@ -61,7 +61,7 @@ public class UserDAO {
 		try {
 			UserDAO_Connetion();
 
-			String sql = "insert into MEMBERS values(?,?,?)";
+			String sql = "insert into Members values(?,?,?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getMb_id());
 			psmt.setString(2, dto.getMb_pw());
@@ -81,7 +81,7 @@ public class UserDAO {
 		try {
 			UserDAO_Connetion();
 
-			String sql = "select * from MEMBERS where mb_id = ? and mb_pw =?";
+			String sql = "select * from Members where mb_id = ? and mb_pw =?";
 
 			psmt = conn.prepareStatement(sql);
 
@@ -91,11 +91,11 @@ public class UserDAO {
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				String id = rs.getString("mb_id");
-				String pw = rs.getString("mb_id");
-				int grade = Integer.parseInt(rs.getString("MB_GRADE"));
-				String nick = rs.getString("nick_name");
-				dto = new MemberDTO(id, pw, grade, nick);
+				String mb_id = rs.getString("mb_id");
+				String mb_pw = rs.getString("mb_pw");
+				int mb_grade = Integer.parseInt(rs.getString("mb_grade"));
+				String nick_name = rs.getString("nick_name");
+				dto = new MemberDTO(mb_id, mb_id, mb_grade, nick_name);
 			}
 
 		} catch (SQLException e) {
@@ -111,7 +111,7 @@ public class UserDAO {
 		try {
 			UserDAO_Connetion();
 
-			String sql = "update MEMBERS set grade = ? where mb_id = ?";
+			String sql = "update Members set mb_grade = ? where mb_id = ?";
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, dto.getMb_id());
@@ -132,7 +132,7 @@ public class UserDAO {
 		try {
 			UserDAO_Connetion();
 
-			String sql = "delete MEMBERS where mb_id = ?";
+			String sql = "delete Members where mb_id = ?";
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, dto.getMb_id());
@@ -152,17 +152,17 @@ public class UserDAO {
 
 		try {
 			UserDAO_Connetion();
-			String sql = "select * from member";
+			String sql = "select * from members";
 
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
-				String id = rs.getString("mb_id");
-				String pw = rs.getString("mb_pw");
-				int grade = Integer.parseInt(rs.getString("grade"));
-				String nick = rs.getString("nick_name");
-				dto = new MemberDTO(id, pw, grade, nick);
+				String mb_id = rs.getString("mb_id");
+				String mb_pw = rs.getString("mb_pw");
+				int mb_grade = Integer.parseInt(rs.getString("mb_grade"));
+				String nick_name = rs.getString("nick_name");
+				dto = new MemberDTO(mb_id, mb_pw, mb_grade, nick_name);
 				dtos.add(dto);
 			}
 
