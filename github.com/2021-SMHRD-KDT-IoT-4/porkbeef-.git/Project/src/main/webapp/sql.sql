@@ -54,6 +54,10 @@ select * from actuator_status;
 update actuator_status set act_feed = 1,act_door = 1,
 act_absor = 1,act_aircon = 1,act_pump = 1,act_boil = 1,act_humid = 1 where ROWNUM = 1;
 
+insert into members values('pig', 'pig', 3, 'pig');
+insert into members values('manage', 'manage', 0, 'manage');
+select * from members;
+
 create table automatic_control(--¤·¤·
     feed_time DATE,
     absor_start NUMBER NOT NULL,
