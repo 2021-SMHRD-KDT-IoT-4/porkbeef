@@ -26,12 +26,6 @@ public class GetDomesticAnimals implements Command{
 		String thr_vaccine=request.getParameter("thr_vaccine"); 	// 3차 백신날짜
 		int enableGrade=Integer.parseInt(request.getParameter("enableGrade")); 		// 수정 가능 등급
 		
-		
-		
-		
-		
-		
-		
 		Domestic_AnimalsDAO dao =new Domestic_AnimalsDAO();
 		Domestic_AnimalsDTO[] dto  =dao.getinfo();
 		
@@ -46,7 +40,7 @@ public class GetDomesticAnimals implements Command{
 		else {
 			System.out.println("조회 실패");
 		}
-		
+		response.sendRedirect("domesticAnimals.jsp");
 		
 	}
 	

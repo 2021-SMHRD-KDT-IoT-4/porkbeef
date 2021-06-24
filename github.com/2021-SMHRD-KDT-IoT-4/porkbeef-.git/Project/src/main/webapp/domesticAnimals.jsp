@@ -87,7 +87,7 @@
 						<%}%>
 			</table>
 		
-			
+			</div>
 			
 		</div>
 		<div class="wrapper style1"></div>
