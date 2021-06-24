@@ -76,3 +76,6 @@ create table manual_control(--¤·¤·
     act_humid NUMBER NOT NULL,
     enableGrade NUMBER NOT NULL
 );
+
+
+select * from domestic_animals;

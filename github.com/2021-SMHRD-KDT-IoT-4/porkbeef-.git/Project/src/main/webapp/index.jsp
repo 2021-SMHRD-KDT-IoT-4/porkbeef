@@ -51,7 +51,7 @@
 					<li><a href="farmControl.jsp">축사 제어</a></li>
 					<li><a href="#">자동 제어</a></li>
 					<li><a href="member.jsp">회원 관리</a></li>
-					<li><a href="domesticAnimals.jsp">돼지 현황</a></li>
+					<li><a href="domesticAnimals.do">돼지 현황</a></li>
 				</ul>
 			</nav>
 		</div>
