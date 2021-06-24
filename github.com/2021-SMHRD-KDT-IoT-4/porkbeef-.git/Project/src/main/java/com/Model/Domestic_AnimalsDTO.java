@@ -9,7 +9,7 @@ public class Domestic_AnimalsDTO {
 	private String fir_vaccine; 	// 1차 백신날짜
 	private String sec_vaccine; 	// 2차 백신날짜
 	private String thr_vaccine; 	// 3차 백신날짜
-	private int enableGrade; 		// 가축등급
+	private int enableGrade; 		// 수정 가능 등급
 
 /////////////////////////////////////////////////////////////////////////////////////////
 

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.controller.Command;
+import com.controller.Login;
 
 @WebServlet("*.do")
 public class front_Controller extends HttpServlet {
@@ -20,8 +21,8 @@ public class front_Controller extends HttpServlet {
 
 		Command _interface = null;
 
-		if (result_URI.equals("")) {
-
+		if (result_URI.equals("Login.do")) {
+			_interface =new Login();
 		} else if (result_URI.equals("")) {
 
 		}

@@ -81,12 +81,11 @@ public class Domestic_AnimalsDAO {
 	}
 
 	// 정보 받아오기 배열로 사용
-	public Domestic_AnimalsDTO[] getinfo(Domestic_AnimalsDTO dto) {
+	public Domestic_AnimalsDTO[] getinfo() {
 		try {
 			Domestic_Animals_Connetion();
 			String sql = "select * from domestic_animals";
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, cnt);
 			rs = psmt.executeQuery();
 			info = new Domestic_AnimalsDTO[2];
 			int i = 0;

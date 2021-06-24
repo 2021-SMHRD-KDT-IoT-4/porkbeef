@@ -28,7 +28,6 @@ public void command(HttpServletRequest request, HttpServletResponse response) th
 			int gas = Integer.parseInt(request.getParameter("gas"));
 			
 			Entire_Environment_DAO dao =new Entire_Environment_DAO();
-			Entire_Environment_DTO dto =new Entire_Environment_DTO(seq_num, check_time, temp, humi, gas);
 	
 			ArrayList<Entire_Environment_DTO> environ_DTO_list = dao.Environment_ARead();
 	
