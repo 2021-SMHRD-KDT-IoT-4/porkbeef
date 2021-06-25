@@ -63,8 +63,8 @@
 	<!-- Wrapper -->
 			<div class="wrapper style1">
 
-				<!-- Header -->
-					<div id="header" class="skel-panels-fixed">
+				<!-- <!-- Header -->
+					<!-- <div id="header" class="skel-panels-fixed">
 						<div id="logo">
 							<h1><a href="Login.jsp">¼Ò °ü¸® µÅÁö</a></h1>
 							<span class="tag">by TEMPLATED</span>
@@ -77,7 +77,25 @@
 								<li><a href="no-sidebar.html">µÅÁöÇöÈ²</a></li>
 							</ul>
 						</nav>
-					</div>
+					</div> -->
+					<div id="header" class="skel-panels-fixed">
+			<div id="logo">
+				<h1>
+					<a href="index.jsp">¼Ò°ü¸®µÅÁö</a>
+				</h1>
+			</div>
+			<nav id="nav">
+				<ul>
+					<li><a href="farmControl.do">Ãà»ç Á¦¾î</a></li>
+					<%if(user!=null && user.getMb_grade() <2){ %>
+					<li><a href="#.do">ÀÚµ¿ Á¦¾î</a></li>
+					<li><a href="member.jsp">È¸¿ø °ü¸®</a></li>
+					<li><a href="domesticAnimals.do">µÅÁö ÇöÈ²</a></li>
+					<%} %>
+					<li><a href="logout.do">·Î±×¾Æ¿ô</a></li>
+				</ul>
+			</nav>
+		</div>
 
 				<!-- Banner -->
 					<div id="banner" class="container">

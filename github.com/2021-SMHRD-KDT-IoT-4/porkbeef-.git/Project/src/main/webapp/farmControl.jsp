@@ -1,3 +1,4 @@
+<%@page import="com.Model.MemberDTO"%>
 <%@page import="com.Model.Actuator_Status_DTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
@@ -32,9 +33,16 @@
 </head>
 
 <body>
-
-	<%
-
+<%
+	// 로그인을 했을때 저장한 session 값 불러오기
+	MemberDTO user = (MemberDTO) session.getAttribute("user");
+	System.out.println(user);
+	
+	
+	
+	if (user == null) {
+		response.sendRedirect("Login.jsp");
+	}
 	%>
 
 
@@ -45,15 +53,19 @@
 		<div id="header" class="skel-panels-fixed">
 			<div id="logo">
 				<h1>
-					<a href="index.html">소관리돼지(CI)</a>
+					<a href="index.jsp">소관리돼지</a>
 				</h1>
-				<span class="tag">보조제목2</span>
 			</div>
 			<nav id="nav">
 				<ul>
-					<li class="active"><a href="farmControl.do">축사 제어</a></li>
+					<li><a href="farmControl.do">축사 제어</a></li>
+					<%if(user != null && user.getMb_grade() <2){ %>
+					<li><a href="#.do">자동 제어</a></li>
 					<li><a href="member.jsp">회원 관리</a></li>
 					<li><a href="domesticAnimals.do">돼지 현황</a></li>
+					<%} %>
+					<li><a href="logout.do">로그아웃</a></li>
+					
 				</ul>
 			</nav>
 		</div>
