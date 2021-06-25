@@ -23,6 +23,7 @@ public class Join implements Command {
 		UserDAO dao = new UserDAO();
 		MemberDTO dto = new MemberDTO(mb_id, mb_pw, 3, nick_name);
 		
+		
 		int cnt = dao.userJoin(dto);
 		
 		if(cnt > 0 ) {
@@ -32,7 +33,7 @@ public class Join implements Command {
 		}else {
 			
 			System.out.println("회원가입 실패");
-			response.sendRedirect("join.jsp");
+			response.sendRedirect("Join.jsp");
 			
 		}
 		
