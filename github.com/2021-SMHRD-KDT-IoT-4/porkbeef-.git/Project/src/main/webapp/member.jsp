@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <title>소 돼지 관리</title>
+        <title>회원가입</title>
         <meta charset="EUC-KR">
         <meta name="description" content="" />
         <meta name="keywords" content="" />

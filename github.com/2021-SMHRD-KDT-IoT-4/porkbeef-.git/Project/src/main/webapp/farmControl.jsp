@@ -8,7 +8,7 @@
 
 <head>
 
-<title>이름 정해야함</title>
+<title>축사제어</title>
 <meta charset="EUC-KR">
 <meta name="description" content="" />
 <meta name="keywords" content="" />

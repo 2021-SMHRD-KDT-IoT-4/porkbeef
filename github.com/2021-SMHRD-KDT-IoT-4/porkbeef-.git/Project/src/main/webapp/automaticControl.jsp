@@ -8,7 +8,7 @@
 <head>
 <meta charset="EUC-KR">
 
- <title>소 관리 돼지</title>
+ <title>자동제어</title>
             <meta charset="EUC-KR">
             <meta name="description" content="" />
             <meta name="keywords" content="" />
