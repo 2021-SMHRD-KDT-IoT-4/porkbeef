@@ -44,7 +44,10 @@
 
 
 		  <!-- Wrapper -->
-              <div id="header" class="skel-panels-fixed">
+                <div class="wrapper style1">
+
+                    <!-- Header -->
+                 <div id="header" class="skel-panels-fixed">
 			<div id="logo">
 				<h1>
 					<a href="index.jsp">소관리돼지</a>
