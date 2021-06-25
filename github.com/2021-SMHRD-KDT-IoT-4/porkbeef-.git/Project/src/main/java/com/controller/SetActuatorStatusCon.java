@@ -2,9 +2,12 @@ package com.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import com.Model.Actuator_Status_DAO;
 import com.Model.Actuator_Status_DTO;
 import com.Model.Manual_Control_DAO;
@@ -14,39 +17,38 @@ public class SetActuatorStatusCon implements Command {
 
 	@Override
 	public void command(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("EUC-KR");
 
-		int act_feed = Integer.parseInt(request.getParameter("act_feed")); // 밥통
-		int act_door = Integer.parseInt(request.getParameter("act_door")); // 축사문
-		int act_absor = Integer.parseInt(request.getParameter("act_absor")); // 흡배기
-		int act_aircon = Integer.parseInt(request.getParameter("act_aircon")); // 에어컨
-		int act_pump = Integer.parseInt(request.getParameter("act_pump")); // 펌프
-		int act_boil = Integer.parseInt(request.getParameter("act_boil")); // 보일러
-		int act_humid = Integer.parseInt(request.getParameter("act_humid")); // 가습기
+		HttpSession session = request.getSession();
+
+		Actuator_Status_DTO actuator_Status_All = (Actuator_Status_DTO) session.getAttribute("Actuator_Status_All");
+
+		request.setCharacterEncoding("EUC-KR");
 
 		Actuator_Status_DAO dao = new Actuator_Status_DAO();
 		Actuator_Status_DTO now_Status = dao.GetActuatorStatus();
-		Actuator_Status_DTO status = new Actuator_Status_DTO(act_feed, act_door, act_absor, act_aircon, act_pump,
-				act_boil, act_humid);
+		Actuator_Status_DTO status = actuator_Status_All;
 
+		
+		System.out.println(actuator_Status_All.getAct_absor());
+		
 		int differentAt = cmpStatus(now_Status, status);
-		
+
 		int cnt = dao.SetActuatorStatus(status);
-		
+
 		// 자동-수동제어
 		boolean rtn = false;
-		
+
 		if (cnt > 0) {
 			Manual_Control_DAO asDAO = new Manual_Control_DAO();
 			Manual_Control_DTO asDTO = asDAO.GetManual();
-			
-			Manual_Control_DTO nextASDTO = changeASDTO(asDTO, cnt); //cnt -> 기능선택번호
-			
+
+			Manual_Control_DTO nextASDTO = changeASDTO(asDTO, cnt); // cnt -> 기능선택번호
+
 			int add = 0;
-			
+
 			while (asDAO.SetManual(nextASDTO) > 0) {
 				add++;
-				
+
 				if (add > 10)
 					break;
 			}
@@ -55,7 +57,7 @@ public class SetActuatorStatusCon implements Command {
 				rtn = true;
 
 		}
-		
+
 		PrintWriter out = response.getWriter();
 
 		out.print(rtn);
@@ -93,9 +95,9 @@ public class SetActuatorStatusCon implements Command {
 	}
 
 	private Manual_Control_DTO changeASDTO(Manual_Control_DTO dto, int num) {
-		
+
 		Manual_Control_DTO rtn = dto;
-		
+
 		if (num == 0)
 			rtn.setAct_feed(1);
 		if (num == 1)
