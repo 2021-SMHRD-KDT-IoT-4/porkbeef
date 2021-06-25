@@ -12,6 +12,7 @@ import com.controller.Command;
 import com.controller.GetActuatorStatusCon;
 import com.controller.GetDomesticAnimals;
 import com.controller.GetState;
+import com.controller.Get_Automatic_Con;
 import com.controller.Login;
 import com.controller.UpdateMember;
 
@@ -37,6 +38,8 @@ public class front_Controller extends HttpServlet {
 			_interface = new GetActuatorStatusCon();
 		} else if (result_URI.equals("getState.do")) {
 			_interface = new GetState();
+		}else if (result_URI.equals("automaticControl.do")) {
+			_interface = new Get_Automatic_Con();
 		}
 
 		_interface.command(request, response);
