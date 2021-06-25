@@ -42,13 +42,13 @@
 <body>
 	<%
 	// 로그인을 했을때 저장한 session 값 불러오기
-	MemberDTO info = (MemberDTO) session.getAttribute("user");
-	System.out.println(info);
+	MemberDTO user = (MemberDTO) session.getAttribute("user");
+	System.out.println(user);
 	
 	Domestic_AnimalsDTO[] animalDB= (Domestic_AnimalsDTO[])session.getAttribute("animalDB");
 	
 	
-	if (info == null) {
+	if (user == null) {
 		response.sendRedirect("Login.jsp");
 	}
 	%>
@@ -58,7 +58,7 @@
 		<!-- Page -->
 		<div id="page" class="container">
 
-			<% if ( info != null && info.getMb_grade() < 2) {%>
+			<% if ( user != null && user.getMb_grade() < 2) {%>
 			<h2 align="center">동물관리페이지</h2>
 			<table align="center" class="table">
 				<br>
