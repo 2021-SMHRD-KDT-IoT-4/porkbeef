@@ -90,4 +90,13 @@ public class Domestic_AnimalsDTO {
 		this.thr_vaccine = thr_vaccine;
 		this.enableGrade = enableGrade;
 	}
+
+	public Domestic_AnimalsDTO(String forwarding_date, String fir_vaccine, String sec_vaccine, String thr_vaccine) {
+		this.forwarding_date = forwarding_date;
+		this.fir_vaccine = fir_vaccine;
+		this.sec_vaccine = sec_vaccine;
+		this.thr_vaccine = thr_vaccine;
+	}
+		
+	
 }
