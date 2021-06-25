@@ -59,13 +59,12 @@
 			<nav id="nav">
 				<ul>
 					<li><a href="farmControl.do">축사 제어</a></li>
-					<%if(user != null && user.getMb_grade() <2){ %>
-					<li><a href="#.do">자동 제어</a></li>
+					<%if(user!=null && user.getMb_grade() <2){ %>
+					<li><a href="automaticControl.do">자동 제어</a></li>
 					<li><a href="member.jsp">회원 관리</a></li>
 					<li><a href="domesticAnimals.do">돼지 현황</a></li>
 					<%} %>
 					<li><a href="logout.do">로그아웃</a></li>
-					
 				</ul>
 			</nav>
 		</div>
