@@ -49,15 +49,6 @@ create table actuator_status(--しし
     act_humid NUMBER NOT NULL
 );
 
-insert into actuator_status values(0,0,0,0,0,0,0);
-select * from actuator_status;
-update actuator_status set act_feed = 1,act_door = 1,
-act_absor = 1,act_aircon = 1,act_pump = 1,act_boil = 1,act_humid = 1 where ROWNUM = 1;
-
-insert into members values('pig', 'pig', 3, 'pig');
-insert into members values('manage', 'manage', 0, 'manage');
-select * from members;
-
 create table automatic_control(--しし
     feed_time DATE,
     absor_start NUMBER NOT NULL,
@@ -81,5 +72,18 @@ create table manual_control(--しし
     enableGrade NUMBER NOT NULL
 );
 
+insert into actuator_status values(0,0,0,0,0,0,0);
+
+select * from actuator_status;
+
+update actuator_status set act_feed = 1,act_door = 1,
+act_absor = 1,act_aircon = 1,act_pump = 1,act_boil = 1,act_humid = 1 where ROWNUM = 1;
+
+insert into members values('pig', 'pig', 3, 'pig');
+insert into members values('manage', 'manage', 0, 'manage');
+select * from members;
+
 
 select * from domestic_animals;
+
+insert into domestic_animals values(2,500,sysdate,sysdate,sysdate,sysdate,sysdate,2);

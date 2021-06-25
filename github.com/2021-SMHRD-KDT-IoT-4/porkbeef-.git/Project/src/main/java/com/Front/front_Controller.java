@@ -41,13 +41,13 @@ public class front_Controller extends HttpServlet {
 			_interface = new GetActuatorStatusCon();
 		} else if (result_URI.equals("getState.do")) {
 			_interface = new GetState();
-		}else if (result_URI.equals("automaticControl.do")) {
+		} else if (result_URI.equals("automaticControl.do")) {
 			_interface = new Get_Automatic_Con();
-		}else if (result_URI.equals("updateAutomaticControl.do")) {
+		} else if (result_URI.equals("updateAutomaticControl.do")) {
 			_interface = new Update_Automatic_Con();
-		}else if (result_URI.equals("Join.do")) {
+		} else if (result_URI.equals("Join.do")) {
 			_interface = new Join();
-		}else if (result_URI.equals("farmControl.do")) {
+		} else if (result_URI.equals("farmControl.do")) {
 			_interface = new SetActuatorStatusCon();
 		}
 
