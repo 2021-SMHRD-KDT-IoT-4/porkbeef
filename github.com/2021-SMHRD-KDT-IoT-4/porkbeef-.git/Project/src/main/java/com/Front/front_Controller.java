@@ -15,6 +15,7 @@ import com.controller.GetState;
 import com.controller.Get_Automatic_Con;
 import com.controller.Login;
 import com.controller.UpdateMember;
+import com.controller.Update_Automatic_Con;
 
 @WebServlet("*.do")
 public class front_Controller extends HttpServlet {
@@ -40,6 +41,8 @@ public class front_Controller extends HttpServlet {
 			_interface = new GetState();
 		}else if (result_URI.equals("automaticControl.do")) {
 			_interface = new Get_Automatic_Con();
+		}else if (result_URI.equals("updateAutomaticControl.do")) {
+			_interface = new Update_Automatic_Con();
 		}
 
 		_interface.command(request, response);
