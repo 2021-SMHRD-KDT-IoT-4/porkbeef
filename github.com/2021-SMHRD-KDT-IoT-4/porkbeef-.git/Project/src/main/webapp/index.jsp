@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.Model.Domestic_AnimalsDTO"%>
 <%@page import="com.Model.Entire_Environment_DTO"%>
 <%@page import="com.Model.MemberDTO"%>
@@ -43,8 +45,10 @@
 				animalsDTOs = 
 						(Domestic_AnimalsDTO[])session.getAttribute("animalDB");
 		
-				String vacTmpDate="",forwardTmpDate="";
-				
+				String vacTmpDate=animalsDTOs[0].getForwarding_date(),forwardTmpDate="";
+				System.out.print(vacTmpDate);
+				SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
+		        Date date1 = sdformat.parse("2020-01-25");
 				for(int i = 0; i <2 ; i++){
 					for(int j = 0; j <3 ; j++){
 						

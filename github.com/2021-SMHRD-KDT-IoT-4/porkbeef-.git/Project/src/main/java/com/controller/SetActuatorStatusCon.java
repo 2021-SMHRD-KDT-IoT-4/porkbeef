@@ -29,20 +29,20 @@ public class SetActuatorStatusCon implements Command {
 		Actuator_Status_DTO status = actuator_Status_All;
 
 		
-		System.out.println(actuator_Status_All.getAct_absor());
+//		System.out.println(actuator_Status_All.getAct_feed());
 		
 		int differentAt = cmpStatus(now_Status, status);
 
 		int cnt = dao.SetActuatorStatus(status);
 
 		// 자동-수동제어
-		boolean rtn = false;
+		
 
 		if (cnt > 0) {
 			Manual_Control_DAO asDAO = new Manual_Control_DAO();
 			Manual_Control_DTO asDTO = asDAO.GetManual();
 
-			Manual_Control_DTO nextASDTO = changeASDTO(asDTO, cnt); // cnt -> 기능선택번호
+			Manual_Control_DTO nextASDTO = changeASDTO(asDTO, differentAt); // cnt -> 기능선택번호
 
 			int add = 0;
 
@@ -52,15 +52,9 @@ public class SetActuatorStatusCon implements Command {
 				if (add > 10)
 					break;
 			}
-
-			if (add < 10)
-				rtn = true;
-
 		}
-
-		PrintWriter out = response.getWriter();
-
-		out.print(rtn);
+	
+		response.sendRedirect("farmControl.do");
 
 	}
 

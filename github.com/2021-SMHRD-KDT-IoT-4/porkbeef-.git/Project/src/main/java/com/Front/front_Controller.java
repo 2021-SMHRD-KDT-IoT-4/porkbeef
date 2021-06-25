@@ -47,7 +47,7 @@ public class front_Controller extends HttpServlet {
 			_interface = new Update_Automatic_Con();
 		} else if (result_URI.equals("Join.do")) {
 			_interface = new Join();
-		} else if (result_URI.equals("farmControl.do")) {
+		} else if (result_URI.equals("farmControlSet.do")) {
 			_interface = new SetActuatorStatusCon();
 		}
 
