@@ -20,22 +20,16 @@ public class Get_Automatic_Con implements Command {
 
 		request.setCharacterEncoding("EUC-KR");
 
-//		String feed_time = request.getParameter("feed_time");
-//		int absor_start = Integer.parseInt(request.getParameter("absor_start"));
-//		int absor_stop = Integer.parseInt(request.getParameter("absor_stop"));
-//		int aircon_start = Integer.parseInt(request.getParameter("aircon_start"));
-//		int aircon_stop = Integer.parseInt(request.getParameter("aircon_stop"));
-//		int humid_start = Integer.parseInt(request.getParameter("humid_start"));
-//		int humid_stop = Integer.parseInt(request.getParameter("humid_stop"));
-//		int boil_start = Integer.parseInt(request.getParameter("boil_start"));
-//		int boil_stop = Integer.parseInt(request.getParameter("boil_stop"));
-//		int grade = Integer.parseInt(request.getParameter("grade"));
-
 		automatic_DAO = new Automatic_Control_DAO();
 		automatic_DTO = automatic_DAO.Automatic_SRead();
 
 		if (automatic_DTO != null) {
 			session.setAttribute("Automatic", automatic_DTO);
+			System.out.println("성공");
+		}else {
+			session.invalidate();
+			System.out.println("실패");
 		}
+		response.sendRedirect("automaticControl.jsp");
 	}
 }

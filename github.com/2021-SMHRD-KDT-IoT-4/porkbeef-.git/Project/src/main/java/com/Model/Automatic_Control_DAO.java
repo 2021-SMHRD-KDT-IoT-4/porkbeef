@@ -63,16 +63,6 @@ public class Automatic_Control_DAO {
 			prepar_statement.setInt(8, automatic_dto.getBoil_start());
 			prepar_statement.setInt(9, automatic_dto.getBoil_stop());
 
-//			String feed_time = null; 	// 밥줄시간
-//			int absor_start = 0; 		// 흡배기 시작 농도
-//			int absor_stop = 0; 		// 흡배기 정지 농도
-//			int aircon_start = 0; 		// 에어컨
-//			nt aircon_stop = 0; 		// 에어컨 정지 온도
-//			int humid_start = 0;		// 가습기 시작 습도
-//			nt humid_stop = 0;		 	// 가습기 정지 습도
-//			int boil_start = 0; 		// 보일러 시작 온도
-//			int boil_stop = 0; 			// 보일러 정지 온도
-
 			state_Check = prepar_statement.executeUpdate();
 
 		} catch (SQLException e) {
@@ -99,16 +89,6 @@ public class Automatic_Control_DAO {
 
 			if (result_set.next()) {
 
-//				변수 확인용 필요없으면 지우기			
-//				String feed_time = null; 	// 밥줄시간
-//				int absor_start = 0; 		// 흡배기 시작 농도
-//				int absor_stop = 0; 		// 흡배기 정지 농도
-//				int aircon_start = 0; 		// 에어컨
-//				int aircon_stop = 0; 		// 에어컨 정지 온도
-//				int humid_start = 0;		// 가습기 시작 습도
-//				nt humid_stop = 0;		 	// 가습기 정지 습도
-//				int boil_start = 0; 		// 보일러 시작 온도
-//				int boil_stop = 0; 			// 보일러 정지 온도
 
 				String feed_time = result_set.getString(1);
 				int absor_start = result_set.getInt(2);
@@ -120,16 +100,6 @@ public class Automatic_Control_DAO {
 				int boil_start = result_set.getInt(8);
 				int boil_stop = result_set.getInt(9);
 
-				// 확인용 확인 후 지우기
-				System.out.println(feed_time);
-				System.out.println(absor_start);
-				System.out.println(absor_stop);
-				System.out.println(aircon_start);
-				System.out.println(aircon_stop);
-				System.out.println(humid_start);
-				System.out.println(humid_stop);
-				System.out.println(boil_start);
-				System.out.println(boil_stop);
 
 				automatic_DTO = new Automatic_Control_DTO(feed_time, absor_start, absor_stop, aircon_start, aircon_stop,
 						humid_start, humid_stop, boil_start, boil_stop);
