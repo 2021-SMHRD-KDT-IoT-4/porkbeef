@@ -1,3 +1,5 @@
+<%@page import="com.Model.Domestic_AnimalsDTO"%>
+<%@page import="com.Model.Entire_Environment_DTO"%>
 <%@page import="com.Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
@@ -29,28 +31,49 @@
 <body>
 
 	<%
-	    MemberDTO user = (MemberDTO)session.getAttribute("user");
-		
+	    MemberDTO user = (MemberDTO)session.getAttribute("user");	
+		Entire_Environment_DTO entire_environment_DTO = null;
+		Domestic_AnimalsDTO[] animalsDTOs = null;
 		if(user == null){
 			response.sendRedirect("Login.jsp");
+		}else{
+			
+				entire_environment_DTO =  
+						(Entire_Environment_DTO)session.getAttribute("StateAllSelect");	
+				animalsDTOs = 
+						(Domestic_AnimalsDTO[])session.getAttribute("animalDB");
+		
+				String vacTmpDate="",forwardTmpDate="";
+				
+				for(int i = 0; i <2 ; i++){
+					for(int j = 0; j <3 ; j++){
+						
+					}	
+					if(forwardTmpDate.equals("")){//
+						
+					}
+				}
+				
 		}
+		
 	%>
+	<% if(user!=null ){%>
 	<!-- Wrapper -->
 	<div class="wrapper style1">
-
+	
 		<!-- Header -->
 
 		<div id="header" class="skel-panels-fixed">
 			<div id="logo">
 				<h1>
-					<a href="index.html">소관리돼지</a>
+					<a href="index.jsp">소관리돼지</a>
 				</h1>
 			</div>
 			<nav id="nav">
 				<ul>
 					<li><a href="farmControl.do">축사 제어</a></li>
 					<%if(user!=null && user.getMb_grade() <2){ %>
-					<li><a href="#">자동 제어</a></li>
+					<li><a href="#.do">자동 제어</a></li>
 					<li><a href="member.jsp">회원 관리</a></li>
 					<li><a href="domesticAnimals.do">돼지 현황</a></li>
 					<%} %>
@@ -66,15 +89,20 @@
 					<section class="4u">
 						<a href="#" class="image featured"><img src="images/pic01.png"
 							width="" height="" alt="" class="img"></a>
-						<div class="box"></div>
+						<div class="box">
+							<span>온도:<%=entire_environment_DTO.getTemp() %>º</span>
+							<span>습도:<%=entire_environment_DTO.getHumi() %>%</span>
+						</div>
 					</section>
 				</td>
 
 				<td align="center">
 					<section class="4u">
 						<a href="#" class="image featured"><img src="images/pic02.png"
-							width="" height="" alt="" class="img"></a>
-						<div class="box"></div>
+							width="" height="" alt="" class="img" id = "weatherImg"></a>
+						<div class="box">
+							<span id= "weather"></span>
+						</div>
 					</section>
 				</td>
 			</tr>
@@ -104,6 +132,6 @@
 
 
 	</div>
-
+	<%} %>
 </body>
 </html>

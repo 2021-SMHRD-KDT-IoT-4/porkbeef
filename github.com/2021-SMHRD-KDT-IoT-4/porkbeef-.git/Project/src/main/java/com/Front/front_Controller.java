@@ -33,12 +33,12 @@ public class front_Controller extends HttpServlet {
 			_interface = new GetDomesticAnimals();
 		} else if (result_URI.equals("updateMember.do")) {
 			_interface = new UpdateMember();
-		}else if (result_URI.equals("farmControl.do")) {
+		} else if (result_URI.equals("farmControl.do")) {
 			_interface = new GetActuatorStatusCon();
-		}else if (result_URI.equals("getState.do")) {
+		} else if (result_URI.equals("getState.do")) {
 			_interface = new GetState();
 		}
-		
+
 		_interface.command(request, response);
 	}
 

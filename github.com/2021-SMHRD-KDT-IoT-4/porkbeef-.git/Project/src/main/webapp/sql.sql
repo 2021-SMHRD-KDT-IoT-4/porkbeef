@@ -83,3 +83,5 @@ create table manual_control(--¤·¤·
 
 
 select * from domestic_animals;
+
+insert into domestic_animals values(2,500,sysdate,sysdate,sysdate,sysdate,sysdate,2);
