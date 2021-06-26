@@ -18,6 +18,12 @@ public class SetActuatorStatusCon implements Command {
 	@Override
 	public void command(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		int act_feed = Integer.parseInt(request.getParameter("act_feed"));
+
+		
+		
+		System.out.println(act_feed);
+
 		HttpSession session = request.getSession();
 
 		Actuator_Status_DTO actuator_Status_All = (Actuator_Status_DTO) session.getAttribute("Actuator_Status_All");
@@ -28,15 +34,13 @@ public class SetActuatorStatusCon implements Command {
 		Actuator_Status_DTO now_Status = dao.GetActuatorStatus();
 		Actuator_Status_DTO status = actuator_Status_All;
 
-		
 //		System.out.println(actuator_Status_All.getAct_feed());
-		
+
 		int differentAt = cmpStatus(now_Status, status);
 
 		int cnt = dao.SetActuatorStatus(status);
 
 		// 자동-수동제어
-		
 
 		if (cnt > 0) {
 			Manual_Control_DAO asDAO = new Manual_Control_DAO();
@@ -53,7 +57,7 @@ public class SetActuatorStatusCon implements Command {
 					break;
 			}
 		}
-	
+
 		response.sendRedirect("farmControl.do");
 
 	}

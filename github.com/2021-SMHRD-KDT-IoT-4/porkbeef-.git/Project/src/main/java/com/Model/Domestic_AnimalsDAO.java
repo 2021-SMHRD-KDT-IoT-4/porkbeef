@@ -15,7 +15,7 @@ public class Domestic_AnimalsDAO {
 	private Domestic_AnimalsDTO[] info = null;
 
 	public void Domestic_Animals_Connetion() {
-		System.out.println("가축 커넥션");
+
 		String ip_number = "localhost";
 		String port_number = "1521";
 		String nick_name = "xe";
@@ -83,16 +83,20 @@ public class Domestic_AnimalsDAO {
 
 	// 정보 받아오기 배열로 사용
 	public Domestic_AnimalsDTO[] getinfo() {
+
 		try {
+			info = new Domestic_AnimalsDTO[2];
+			int i = 0;
+
 			Domestic_Animals_Connetion();
+
 			String sql = "select * from domestic_animals";
+
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
-			info = new Domestic_AnimalsDTO[2];
-			System.out.println("가축 커넥션 성공");
-			int i = 0;
+
 			while (rs.next()) {
-				System.out.println(i);
+
 				int room = rs.getInt("room");
 				int product_cnt = rs.getInt("product_cnt");
 				String receving_date = rs.getString("receving_date");
@@ -112,6 +116,5 @@ public class Domestic_AnimalsDAO {
 			close();
 		}
 		return info;
-
 	}
 }

@@ -11,11 +11,13 @@ public class Logout implements Command {
 
 	@Override
 	public void command(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session=request.getSession();
-		session.removeAttribute("user");
-		System.out.println("로그아웃 성공");
 		
-		response.sendRedirect("Login.jsp");
-	}
+		HttpSession session = request.getSession();
+		
+		session.removeAttribute("user");
+		
+		System.out.println("로그아웃 성공");
 
+		response.sendRedirect("Login.do");
+	}
 }

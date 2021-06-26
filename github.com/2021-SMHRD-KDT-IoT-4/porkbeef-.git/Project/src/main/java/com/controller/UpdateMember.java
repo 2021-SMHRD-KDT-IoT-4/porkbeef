@@ -16,21 +16,19 @@ public class UpdateMember implements Command {
 	public void command(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("EUC-KR");
-		
+
 		String mb_id = request.getParameter("mb_id");
-		int mb_grade = Integer.parseInt(request.getParameter("mb_grade"));		
-	
+		int mb_grade = Integer.parseInt(request.getParameter("mb_grade"));
+
 		UserDAO dao = new UserDAO();
-		MemberDTO dto = new MemberDTO(mb_id,mb_grade);
+		MemberDTO dto = new MemberDTO(mb_id, mb_grade);
 		int cnt = dao.userUpdate(dto);
-		
+
 		if (cnt > 0) {
 			System.out.println("회원정보 수정 성공!");
-		}else {
+		} else {
 			System.out.println("회원정보 수정 실패!");
 		}
 		response.sendRedirect("member.jsp");
-		
 	}
-
 }

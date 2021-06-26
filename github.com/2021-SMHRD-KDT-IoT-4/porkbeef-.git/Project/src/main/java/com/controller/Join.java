@@ -19,26 +19,21 @@ public class Join implements Command {
 		String mb_id = request.getParameter("mb_id");
 		String mb_pw = request.getParameter("mb_pw");
 		String nick_name = request.getParameter("nick_name");
-		
+
 		UserDAO dao = new UserDAO();
 		MemberDTO dto = new MemberDTO(mb_id, mb_pw, 3, nick_name);
-		
-		
+
 		int cnt = dao.userJoin(dto);
-		
-		if(cnt > 0 ) {
+
+		if (cnt > 0) {
 			System.out.println("회원가입 성공");
 			response.sendRedirect("index.jsp");
-			
-		}else {
-			
+
+		} else {
+
 			System.out.println("회원가입 실패");
 			response.sendRedirect("Join.jsp");
-			
-		}
-		
-		
-		
-	}
 
+		}
+	}
 }

@@ -76,7 +76,6 @@ public class Automatic_Control_DAO {
 
 	public Automatic_Control_DTO Automatic_SRead() {
 
-		automatic_DTO = null;
 		try {
 
 			Automatic_Connetion();

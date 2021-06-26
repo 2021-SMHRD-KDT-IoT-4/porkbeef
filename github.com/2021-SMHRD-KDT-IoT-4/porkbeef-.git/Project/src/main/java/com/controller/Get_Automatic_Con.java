@@ -26,7 +26,7 @@ public class Get_Automatic_Con implements Command {
 		if (automatic_DTO != null) {
 			session.setAttribute("Automatic", automatic_DTO);
 			System.out.println("성공");
-		}else {
+		} else {
 			session.invalidate();
 			System.out.println("실패");
 		}

@@ -14,22 +14,12 @@
 <meta name="keywords" content="" />
 
 <script src="js/jquery.min.js"></script>
-<%
-//배경화면1
-%>
 <script src="js/skel.min.js"></script>
-<%
-//배경화면2
-%>
 <script src="js/init.js"></script>
-<%
-//배경화면3
-%>
-<%-- <script src="js/jquery.dropotron.min.js">
-                            </script>
-                            <% //?? %>
-                                <script src="js/skel-layers.min.js"></script>
-                                <% //?? %> --%>
+
+<script src="js/jquery.dropotron.min.js"></script>
+<script src="js/skel-layers.min.js"></script>
+                               
 </head>
 
 <body>
@@ -59,7 +49,7 @@
 			<nav id="nav">
 				<ul>
 					<li><a href="farmControl.do">축사 제어</a></li>
-					<%if(user!=null && user.getMb_grade() <2){ %>
+					<%if(user!=null && user.getMb_grade() < 2){ %>
 					<li><a href="automaticControl.do">자동 제어</a></li>
 					<li><a href="member.jsp">회원 관리</a></li>
 					<li><a href="domesticAnimals.do">돼지 현황</a></li>
@@ -77,7 +67,7 @@
 		<div id="extra">
 			<div class="container">
 				<div class="row no-collapse-1">
-					<form class="4u" action="farmControl.do" method="post">
+					<form class="4u" action="farmControlSet.do" method="post">
 						<a href="#" class="image featured"><img src="" alt=""></a>
 						<div class="box">
 							<h1>사료주기</h1>

@@ -33,5 +33,4 @@ public class SetManualCon implements Command {
 		out.print(rtn);
 
 	}
-
 }
