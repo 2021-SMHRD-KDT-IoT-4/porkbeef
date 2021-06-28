@@ -17,6 +17,7 @@
         <script src="js/skel-layers.min.js"></script>
 
         <style type="text/css">
+        
             .wrapper.style1 {
                 padding-bottom: 15em;
                 background-size: cover;

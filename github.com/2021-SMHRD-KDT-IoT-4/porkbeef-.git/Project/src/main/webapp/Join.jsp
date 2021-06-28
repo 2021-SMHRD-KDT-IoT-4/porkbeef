@@ -7,6 +7,7 @@
         <meta charset="EUC-KR">
         <meta name="description" content="" />
         <meta name="keywords" content="" />
+        <meta name="viewport" content="width=1024, height=768" />
 
         <script src="js/jquery.min.js"></script>
         <script src="js/skel.min.js"></script>
@@ -25,7 +26,6 @@
                 -webkit-transform: translateZ(0);
             }
 
-
             input[type="submit"].alt,
             input[type="button"].alt,
             .button.alt {
@@ -35,7 +35,6 @@
             input[type="text"],
             input[type="password"],
             textarea {
-
                 line-height: 2em;
                 -moz-appearance: none;
                 -webkit-appearance: none;
@@ -80,24 +79,21 @@
     </head>
 
     <body>
-        <div class="wrapper style1">
+        <div class="wrapper style1"
+            style="height: 768px; padding-top: 0px; padding-bottom: 0px; margin-left: 0px; margin-bottom: 0px;">
 
-            <span id="txt"></span>
-
-            <form action="Join.do">
-                <table>
+            <form action="Join.do"
+                style="margin-left: 0px; width: 512px; height: 384px; margin-right: 0px; padding-left: 400px; margin-top: 0px; padding-top: 150px; padding-right: 0px;">
+                <table style="margin-left: 0px; width: 256px; height: 192px; margin-right: 0px;">
                     <tr>
                         <td><input type="text" name="mb_id" placeholder="아이디" /><br></td>
                     </tr>
                     <tr>
-                        <td>
-                            <input type="password" id="PW" name="mb_pw" placeholder="비밀번호" /><br>
-                        </td>
+                        <td><input type="password" id="PW" name="mb_pw" placeholder="비밀번호" /><br></td>
                     </tr>
                     <tr>
                         <td><input type="password" id="PWCheck" name="PWCheck" placeholder="비밀번호 재확인"
-                                onchange="pwcheck()" /><br>
-                        </td>
+                                onchange="pwcheck()" /><br></td>
                     </tr>
                     <tr>
                         <td><input type="text" name="nick_name" placeholder="닉네임" /><br></td>
@@ -105,15 +101,19 @@
                 </table>
 
 
-                <span id=button><input type="submit" class="button alt" value="회원가입" />
-
-                    <input type="button" class="button alt" value="뒤로가기" onclick="location.href='Login.jsp';" />
+                <span id=button style="left: 70px; margin-left: 0px; width: 0px; height: 0px;"><input type="submit"
+                        style="width: 100%; margin-left: 0px; margin-right: 0px; padding-left: 10px; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; margin-bottom: 5px; margin-top: 0px;"
+                        class="button alt" value="회원가입" /> <input type="button" class="button alt" value="뒤로가기"
+                        onclick="location.href='Login.jsp';"
+                        style="width: 100%; margin-left: 0px; margin-right: 0px; padding-left: 10px; padding-top: 10px; padding-right: 10px; padding-bottom: 10px;" />
                 </span>
             </form>
+            <span id="txt" style="left: -476px; top: 18px;"></span>
         </div>
 
-        <script>
 
+
+        <script>
             function pwcheck() {
 
                 let PW = document.getElementById("PW").value;
@@ -126,7 +126,6 @@
                     document.getElementById("txt").innerText = "비밀번호 불일치";
                 }
             }
-
         </script>
 
     </body>
