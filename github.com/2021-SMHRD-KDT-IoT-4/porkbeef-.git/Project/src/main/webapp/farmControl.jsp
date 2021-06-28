@@ -1,97 +1,366 @@
-<%@page import="com.Model.MemberDTO" %>
-    <%@page import="com.Model.Actuator_Status_DTO" %>
-        <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR" %>
+<%@page import="com.Model.MemberDTO"%>
+<%@page import="com.Model.Actuator_Status_DTO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 
-            <!DOCTYPE html>
-            <html>
+<!DOCTYPE html>
+<html>
 
-            <head>
+<head>
 
-                <title>축사제어</title>
-                <meta charset="EUC-KR">
-                <meta name="description" content="" />
-                <meta name="keywords" content="" />
+<title>축사제어</title>
+<meta charset="EUC-KR">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="viewport" content="width=1024, height=768" />
 
-                <script src="js/jquery.min.js"></script>
-                <script src="js/skel.min.js"></script>
-                <script src="js/init.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/skel.min.js"></script>
+<script src="js/init.js"></script>
 
-                <script src="js/jquery.dropotron.min.js"></script>
-                <script src="js/skel-layers.min.js"></script>
+<script src="js/jquery.dropotron.min.js"></script>
+<script src="js/skel-layers.min.js"></script>
 
-            </head>
+<style type="text/css">
+.wrapper.style1 {
+	background: url(./images/back.jpg) no-repeat center top;
+	padding-top: 11em;
+	padding-bottom: 24em;
+	background-size: cover;
+	background-attachment: fixed;
+	-webkit-backface-visibility: hidden;
+	-webkit-transform: translateZ(0);
+}
 
-            <body>
-                <%
-				// 로그인을 했을때 저장한 session 값 불러오기
-					MemberDTO user = (MemberDTO) session.getAttribute("user");%>
+#header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: #00000000;
+	color: #fff;
+	padding: 1.25em;
+	z-index: 100;
+}
 
-                    <!-- Wrapper -->
-                    <div class="wrapper style1">
+.box {
+	padding: 20px;
+	background: #FFF;
+	text-align: center;
+	border-radius: 5px;
+	margin-left: 19px;
+}
 
-                        <!-- Header -->
-                        <div id="header" class="skel-panels-fixed">
-                            <div id="logo">
-                                <h1>
-                                    <a href="index.jsp">소관리돼지</a>
-                                </h1>
-                            </div>
-                            <nav id="nav">
-                                <ul>
-                                    <li><a href="farmControl.do">축사 제어</a></li>
-                                    <%if(user!=null && user.getMb_grade() < 2){ %>
-                                        <li><a href="automaticControl.do">자동 제어</a></li>
-                                        <li><a href="member.jsp">회원 관리</a></li>
-                                        <li><a href="domesticAnimals.do">돼지 현황</a></li>
-                                        <%} %>
-                                            <li><a href="logout.do">로그아웃</a></li>
-                                </ul>
-                            </nav>
-                        </div>
+table {
+	width: 75%;
+	margin-left: 13em;
+	margin-top: 12em;
+}
 
-                        <% Actuator_Status_DTO actu_Status = (Actuator_Status_DTO)session.getAttribute("Actuator_Status_All"); %>
+body, input, select, textarea {
+	font-size: 12pt;
+	line-height: 2.5em;
+}
 
-                            <!-- 몸체 -->
-                            <div id="extra">
-                                <div class="container">
-                                    <div class="row no-collapse-1">
-                                        <form class="4u" action="farmControlSet.do" method="post">
-                                            <a href="#" class="image featured"><img src="" alt=""></a>
-                                            <div class="box">
-                                                <h1>사료주기</h1>
-                                                <br>
+#logo {
+	font-size: 2em;
+	cursor: default;
+}
 
-                                                <% if (actu_Status !=null) { %>
-                                                    <h1 id="feedval">
-                                                        상태는
-                                                        <%=actu_Status.getAct_feed()%>
-                                                            입니다.
-                                                    </h1>
-                                                    <br> <input type="button" id="Act_feed" value="동작"
-                                                        onclick="action_actuator_State(1,<%=actu_Status.getAct_feed()%>)">
+#nav {
+	position: absolute;
+	right: 0;
+	top: 0;
+	cursor: default;
+}
 
-                                                    <% // action_actuator_State(센서변수번호 - 1~7번 / 센서동작상태 - 0또는 1) %>
+.\34 u {
+	width: 180px;
+}
 
-                                                        <% } else { %>
-                                                            <h1>상태 정보가 없습니다.</h1>
-                                                            <br> <input type="button" id="Act_feed" value="동작"
-                                                                onclick="action_Empty()">
-                                                            <% } %>
-                                            </div>
-                                        </form>
+.image.featured img {
+	display: block;
+	width: 90%;
+}
+
+.image.featured {
+	position: static;
+	display: block;
+	width: 15em;
+	padding: 10px;
+	margin: auto;
+}
+
+#nav ul li a {
+	-moz-transition: color 0.35s ease-in-out;
+	-webkit-transition: color 0.35s ease-in-out;
+	-o-transition: color 0.35s ease-in-out;
+	-ms-transition: color 0.35s ease-in-out;
+	transition: color 0.35s ease-in-out;
+	display: inline-block;
+	color: #ddd;
+	color: rgba(255, 255, 255, 0.75);
+	text-decoration: none;
+}
+</style>
+
+</head>
+
+<body>
+	<%
+	// 로그인을 했을때 저장한 session 값 불러오기
+	MemberDTO user = (MemberDTO) session.getAttribute("user");
+	%>
+
+	<div class="wrapper style1"
+		style="height: 768px; padding-top: 0px; padding-bottom: 0px;">
 
 
+		<div id="header" class="skel-panels-fixed"
+			style="bottom: 690px; padding-right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px;">
+			<div id="logo"
+				style="border-top-width: 0px; padding-top: 14px; padding-bottom: 10px; padding-left: 55px; padding-right: 10px;">
+				<h1>
+					<a href="index.jsp">소관리돼지</a>
+				</h1>
+			</div>
+			<nav id="nav" style="bottom: 0px; padding-top: 0px;">
+				<ul style="margin-bottom: 0px; height: 46px; padding-top: 10px;">
+					<li
+						style="white-space: nowrap; padding-top: 0px; padding-right: 20px; padding-bottom: 0px; padding-left: 20px;"><a
+						href="farmControl.do">축사 제어</a></li>
+					<%if(user!=null && user.getMb_grade() < 2){ %>
+					<li
+						style="white-space: nowrap; padding-top: 0px; padding-right: 20px; padding-bottom: 0px; padding-left: 20px;"><a
+						href="automaticControl.do">자동 제어</a></li>
+					<li
+						style="white-space: nowrap; padding-top: 0px; padding-right: 20px; padding-bottom: 0px; padding-left: 20px;"><a
+						href="member.jsp">회원 관리</a></li>
+					<li
+						style="white-space: nowrap; padding-top: 0px; padding-right: 20px; padding-bottom: 0px; padding-left: 20px;"><a
+						href="domesticAnimals.do">돼지 현황</a></li>
+					<%} %>
+					<li
+						style="white-space: nowrap; padding-top: 0px; padding-right: 20px; padding-bottom: 0px; padding-left: 20px;"><a
+						href="logout.do">로그아웃</a></li>
+				</ul>
+			</nav>
+		</div>
 
-                                    </div>
+		<%
+		Actuator_Status_DTO actu_Status = (Actuator_Status_DTO) session.getAttribute("Actuator_Status_All");
+		%>
 
-                                    <div id="copyright">
-                                        <% // 사이즈로인해 그냥 뒀음 상단 공간을 늘리거나 이걸 그냥 두거나 %>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
+		<!-- 몸체 -->
+		<div class="container"
+			style="margin-left: 0px; margin-right: 0px; height: 300px; width: 950px; padding-left: 170px; padding-right: 170px; padding-top: 200px; padding-bottom: 200px;">
 
-                    <script>
+			<div class="row no-collapse-1"
+				style="margin-left: 0px; width: 1016px;">
+				<form class="4u" action="farmControl.do" method="post"
+					style="padding-left: 0px;">
+					<div class="box"
+						style="margin-left: 0px; padding-bottom: 5px; padding-left: 5px; padding-top: 5px; padding-right: 5px; width: 145px; height: 150px; margin-top: 0px; margin-bottom: 0px;">
+						<h1>사료주기</h1>
+
+						<%
+						if (actu_Status != null) {
+						%>
+						<h1>
+							상태는
+							<%=actu_Status.getAct_feed()%>
+							입니다.
+						</h1>
+						<input type="button" id="Act_feed" value="동작"
+							onclick="action_actuator_State(1,<%=actu_Status.getAct_feed()%>)"
+							style="padding-left: 0px; padding-right: 0px; border-top-width: 2px; padding-top: 0px; padding-bottom: 0px; width: 100px; height: 60px;">
+
+						<%// action_actuator_State(센서변수번호 - 1~7번 / 센서동작상태 - 0또는 1)%>
+
+						<%}else {%>
+						<h1>상태 정보가 없습니다.</h1>
+						<input type="button" id="Act_feed" value="동작"
+							onclick="action_Empty()"
+							style="padding-left: 0px; padding-right: 0px; border-top-width: 2px; padding-top: 0px; padding-bottom: 0px; width: 100px; height: 60px;">
+						<%}%>
+					</div>
+				</form>
+
+
+				<form class="4u" action="farmControl.do" method="post"
+					style="padding-left: 0px;">
+					<div class="box"
+						style="margin-left: 0px; padding-bottom: 5px; padding-left: 5px; padding-top: 5px; padding-right: 5px; width: 145px; height: 150px; margin-top: 0px; margin-bottom: 0px;">
+						<h1>축사문 개폐</h1>
+
+						<%
+							if (actu_Status != null) {
+							%>
+						<h1>
+							상태는
+							<%=actu_Status.getAct_door()%>
+							입니다.
+						</h1>
+						<input type="button" id="act_door" value="동작"
+							onclick="action_actuator_State(2,<%=actu_Status.getAct_door()%>)"
+							style="padding-left: 0px; padding-right: 0px; border-top-width: 2px; padding-top: 0px; padding-bottom: 0px; width: 100px; height: 60px;">
+
+						<%} else {%>
+						<h1>상태 정보가 없습니다.</h1>
+						<input type="button" id="act_door" value="동작"
+							onclick="action_Empty()"
+							style="padding-left: 0px; padding-right: 0px; border-top-width: 2px; padding-top: 0px; padding-bottom: 0px; width: 100px; height: 60px;">
+						<%}%>
+					</div>
+				</form>
+
+
+				<form class="4u" action="farmControl.do" method="post"
+					style="padding-left: 0px;">
+					<div class="box"
+						style="margin-left: 0px; padding-bottom: 5px; padding-left: 5px; padding-top: 5px; padding-right: 5px; width: 145px; height: 150px; margin-top: 0px; margin-bottom: 0px;">
+						<h1>흡배기 동작/정지</h1>
+						<%
+							if (actu_Status != null) {
+							%>
+						<h1>
+							상태는
+							<%=actu_Status.getAct_absor()%>
+							입니다.
+						</h1>
+						<input type="button" id="act_absor" value="동작"
+							onclick="action_actuator_State(3,<%=actu_Status.getAct_absor()%>)"
+							style="padding-left: 0px; padding-right: 0px; border-top-width: 2px; padding-top: 0px; padding-bottom: 0px; width: 100px; height: 60px;">
+						<%
+							} else {
+							%>
+						<h1>상태 정보가 없습니다.</h1>
+						<input type="button" id="act_absor" value="동작"
+							onclick="action_Empty()"
+							style="padding-left: 0px; padding-right: 0px; border-top-width: 2px; padding-top: 0px; padding-bottom: 0px; width: 100px; height: 60px;">
+						<%
+							}
+							%>
+					</div>
+				</form>
+
+				<form class="4u" action="farmControl.do" method="post"
+					style="padding-left: 0px;">
+					<div class="box"
+						style="margin-left: 0px; padding-bottom: 5px; padding-left: 5px; padding-top: 5px; padding-right: 5px; width: 145px; height: 150px; margin-top: 0px; margin-bottom: 0px;">
+
+						<h1>에어컨 동작/정지</h1>
+						<%
+							if (actu_Status != null) {
+							%>
+						<h1>
+							상태는
+							<%=actu_Status.getAct_aircon()%>
+							입니다.
+						</h1>
+						<input type="button" id="act_aircon" value="동작"
+							onclick="action_actuator_State(4,<%=actu_Status.getAct_aircon()%>)"
+							style="padding-left: 0px; padding-right: 0px; border-top-width: 2px; padding-top: 0px; padding-bottom: 0px; width: 100px; height: 60px;">
+						<%
+							} else {
+							%>
+						<h1>상태 정보가 없습니다.</h1>
+						<input type="button" id="act_aircon" value="동작"
+							onclick="action_Empty()"
+							style="padding-left: 0px; padding-right: 0px; border-top-width: 2px; padding-top: 0px; padding-bottom: 0px; width: 100px; height: 60px;">
+						<%
+							}
+							%>
+					</div>
+				</form>
+			</div>
+
+
+			<div class="row no-collapse-1"
+				style="width: 1016px; height: 150px; margin-left: 85px; margin-right: 85px;">
+
+				<form class="4u" action="farmControl.do" method="post"
+					style="padding-left: 0px;">
+					<div class="box"
+						style="margin-left: 0px; padding-bottom: 5px; padding-left: 5px; padding-top: 5px; padding-right: 5px; width: 145px; height: 150px; margin-top: 0px; margin-bottom: 0px;">
+						<h1>펌프 동작/정지</h1>
+						<%
+							if (actu_Status != null) {
+							%>
+						<h1>
+							상태는
+							<%=actu_Status.getAct_pump()%>
+							입니다.
+						</h1>
+						<input type="button" id="act_pump" value="동작"
+							onclick="action_actuator_State(5,<%=actu_Status.getAct_pump()%>)"
+							style="padding-left: 0px; padding-right: 0px; border-top-width: 2px; padding-top: 0px; padding-bottom: 0px; width: 100px; height: 60px;">
+						<%
+							} else {
+							%>
+						<h1>상태 정보가 없습니다.</h1>
+						<input type="button" id="act_pump" value="동작"
+							onclick="action_Empty()"
+							style="padding-left: 0px; padding-right: 0px; border-top-width: 2px; padding-top: 0px; padding-bottom: 0px; width: 100px; height: 60px;">
+						<%
+							}
+							%>
+					</div>
+				</form>
+
+				<form class="4u" action="farmControl.do" method="post"
+					style="padding-left: 0px;">
+					<div class="box"
+						style="margin-left: 0px; padding-bottom: 5px; padding-left: 5px; padding-top: 5px; padding-right: 5px; width: 145px; height: 150px; margin-top: 0px; margin-bottom: 0px;">
+						<h1>보일러 동작/정지</h1>
+						<%if (actu_Status != null) {%>
+						<h1>
+							상태는
+							<%=actu_Status.getAct_boil()%>
+							입니다.
+						</h1>
+						<input type="button" id="act_boil" value="동작"
+							onclick="action_actuator_State(6,<%=actu_Status.getAct_boil()%>)"
+							style="padding-left: 0px; padding-right: 0px; border-top-width: 2px; padding-top: 0px; padding-bottom: 0px; width: 100px; height: 60px;">
+						<%} else {%>
+						<h1>상태 정보가 없습니다.</h1>
+						<input type="button" id="act_boil" value="동작"
+							onclick="action_Empty()"
+							style="padding-left: 0px; padding-right: 0px; border-top-width: 2px; padding-top: 0px; padding-bottom: 0px; width: 100px; height: 60px;">
+						<%}%>
+					</div>
+				</form>
+
+				<form class="4u" action="farmControl.do" method="post"
+					style="padding-left: 0px;">
+					<div class="box"
+						style="margin-left: 0px; padding-bottom: 5px; padding-left: 5px; padding-top: 5px; padding-right: 5px; width: 145px; height: 150px; margin-top: 0px; margin-bottom: 0px;">
+						<h1>가습기 동작/정지</h1>
+						<%
+							if (actu_Status != null) {
+							%>
+						<h1>
+							상태는
+							<%=actu_Status.getAct_humid()%>
+							입니다.
+						</h1>
+						<input type="button" id="act_humid" value="동작"
+							onclick="action_actuator_State(7,<%=actu_Status.getAct_humid()%>)"
+							style="padding-left: 0px; padding-right: 0px; border-top-width: 2px; padding-top: 0px; padding-bottom: 0px; width: 100px; height: 60px;">
+						<%} else {%>
+						<h1>상태 정보가 없습니다.</h1>
+						<input type="button" id="act_humid" value="동작"
+							onclick="action_Empty()"
+							style="padding-left: 0px; padding-right: 0px; border-top-width: 2px; padding-top: 0px; padding-bottom: 0px; width: 100px; height: 60px;">
+						<%}%>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+	<script>
 
                         function action_Empty() {
 
@@ -99,8 +368,8 @@
                         }
 
                         </script>
-                        
-                        <script type="text/javascript">
+
+	<script type="text/javascript">
                         
                         
                         function action_actuator_State(actuator_Num, actuator_State) {
@@ -134,13 +403,7 @@
                           	 	 }
                             
                             }
-                        
-                       
-
-                        
-
                     </script>
+</body>
 
-            </body>
-
-            </html>
+</html>

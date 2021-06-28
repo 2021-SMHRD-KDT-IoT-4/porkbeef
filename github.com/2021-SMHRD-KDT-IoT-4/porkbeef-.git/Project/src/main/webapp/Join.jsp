@@ -21,6 +21,7 @@
                 padding-top: 15em;
                 padding-bottom: 14em;
                 background-size: cover;
+                background: url(./images/back.jpg) no-repeat center top;
                 background-attachment: fixed;
                 -webkit-backface-visibility: hidden;
                 -webkit-transform: translateZ(0);
@@ -110,8 +111,6 @@
             </form>
             <span id="txt" style="left: -476px; top: 18px;"></span>
         </div>
-
-
 
         <script>
             function pwcheck() {

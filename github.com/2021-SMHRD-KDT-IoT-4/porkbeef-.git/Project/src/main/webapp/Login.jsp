@@ -21,6 +21,7 @@
             .wrapper.style1 {
                 padding-bottom: 15em;
                 background-size: cover;
+                background: url(./images/back.jpg) no-repeat center top;
                 background-attachment: fixed;
                 -webkit-backface-visibility: hidden;
                 -webkit-transform: translateZ(0);
@@ -102,19 +103,24 @@
                         <tr>
                             <td><input type="text" name="mb_id" placeholder="ID를 입력하세요"><br></td>
                         </tr>
-                        <tr>
-                            <td><input type="password" name="mb_pw" placeholder="PW를 입력하세요"><br></td>
-                        </tr>
-                        <tr>
-                            <td id="button"><input type="submit" value="로그인" class="button fit"
-                                    style="margin-left: 65px; margin-right: 65px; margin-bottom: 5px;"><br></td>
-                        </tr>
-                        <tr>
-                            <td id="button"><input type="button" value="회원가입" class="button fit"
-                                    onClick="location.href='Join.jsp'"
-                                    style="margin-left: 65px; margin-right: 65px; margin-bottom: 5px;"></td>
-                        </tr>
-                    </table>
+					<tr>
+						<td><input type="password" name="mb_pw"
+							placeholder="PW를 입력하세요"><br></td>
+					</tr>
+					<tr>
+						<td id="button"
+							style="padding-left: 110px; padding-right: 110px; padding-bottom: 5px;"><input
+							type="submit" value="로그인" class="button fit"
+							style="margin-left: 0px; margin-right: 0px; margin-bottom: 5px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; width: 112px;"></td>
+					</tr>
+					<tr>
+						<td id="button"
+							style="padding-left: 110px; padding-right: 110px; padding-bottom: 5px;"><input
+							type="button" value="회원가입" class="button fit"
+							onClick="location.href='Join.jsp'" style="margin-left: 0px; margin-right: 0px; margin-bottom: 5px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; width: 112px;"></td>
+					</tr>
+				</table>
+                
                 </form>
             </div>
         </div>
