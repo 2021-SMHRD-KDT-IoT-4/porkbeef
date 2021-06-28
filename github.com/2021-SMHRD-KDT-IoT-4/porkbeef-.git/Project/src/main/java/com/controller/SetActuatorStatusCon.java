@@ -20,16 +20,16 @@ public class SetActuatorStatusCon implements Command {
 
 		HttpSession session = request.getSession();
 
-		Actuator_Status_DTO actuator_Status_All = (Actuator_Status_DTO) session.getAttribute("Actuator_Status_All");
-
 		request.setCharacterEncoding("EUC-KR");
+
+		int num = Integer.parseInt(request.getParameter("actnum"));
+		int state = Integer.parseInt(request.getParameter("actState"));
 
 		Actuator_Status_DAO dao = new Actuator_Status_DAO();
 		Actuator_Status_DTO now_Status = dao.GetActuatorStatus();
-		Actuator_Status_DTO status = actuator_Status_All;
+		Actuator_Status_DTO status = now_Status;
 
-//		System.out.println(actuator_Status_All.getAct_feed());
-
+		status = setStatus(status, num, state);
 		int differentAt = cmpStatus(now_Status, status);
 
 		int cnt = dao.SetActuatorStatus(status);
@@ -39,8 +39,7 @@ public class SetActuatorStatusCon implements Command {
 		if (cnt > 0) {
 			Manual_Control_DAO asDAO = new Manual_Control_DAO();
 			Manual_Control_DTO asDTO = asDAO.GetManual();
-
-			Manual_Control_DTO nextASDTO = changeASDTO(asDTO, differentAt); // cnt -> 기능선택번호
+			Manual_Control_DTO nextASDTO = changeASDTO(asDTO, differentAt); 
 
 			int add = 0;
 
@@ -54,6 +53,27 @@ public class SetActuatorStatusCon implements Command {
 
 		response.sendRedirect("farmControl.do");
 
+	}
+
+	private Actuator_Status_DTO setStatus(Actuator_Status_DTO a, int num, int state) {
+
+		if (num == 1) {
+			a.setAct_feed(state == 0 ? 1 : 0);
+		} else if (num == 2) {
+			a.setAct_door(state == 0 ? 1 : 0);
+		} else if (num == 3) {
+			a.setAct_absor(state == 0 ? 1 : 0);
+		} else if (num == 4) {
+			a.setAct_aircon(state == 0 ? 1 : 0);
+		} else if (num == 5) {
+			a.setAct_pump(state == 0 ? 1 : 0);
+		} else if (num == 6) {
+			a.setAct_boil(state == 0 ? 1 : 0);
+		} else if (num == 7) {
+			a.setAct_humid(state == 0 ? 1 : 0);
+		}
+		
+		return a;
 	}
 
 	private int cmpStatus(Actuator_Status_DTO a, Actuator_Status_DTO b) {

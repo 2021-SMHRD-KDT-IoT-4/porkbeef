@@ -31,7 +31,8 @@ public class front_Controller extends HttpServlet {
 		String result_URI = request_URI.substring(context_Path.length() + 1);
 
 		Command _interface = null;
-
+	
+		
 		if (result_URI.equals("Login.do")) {
 			_interface = new Login();
 		} else if (result_URI.equals("domesticAnimals.do")) {
@@ -48,7 +49,7 @@ public class front_Controller extends HttpServlet {
 			_interface = new Update_Automatic_Con();
 		} else if (result_URI.equals("Join.do")) {
 			_interface = new Join();
-		} else if (result_URI.equals("farmControlSet.do")) {
+		} else if (result_URI.indexOf("farmControlSet.do")>=0) {
 			_interface = new SetActuatorStatusCon();
 		}else if (result_URI.equals("logout.do")) {
 			_interface = new Logout();

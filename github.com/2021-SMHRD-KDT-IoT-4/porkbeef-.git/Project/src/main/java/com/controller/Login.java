@@ -13,6 +13,8 @@ import com.Model.Entire_Environment_DTO;
 import com.Model.MemberDTO;
 import com.Model.UserDAO;
 
+
+
 public class Login implements Command {
 
 	@Override
@@ -62,7 +64,6 @@ public class Login implements Command {
 			} else {
 				System.out.println("조회 실패");
 			}
-
 			response.sendRedirect("index.jsp");
 
 		} else {

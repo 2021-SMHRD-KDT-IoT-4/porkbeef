@@ -372,38 +372,13 @@ body, input, select, textarea {
 	<script type="text/javascript">
                         
                         
-                        function action_actuator_State(actuator_Num, actuator_State) {
-
-                        
-
-                            // 1.밥통,2.축사문,3.흡배기,4.에어컨,5.펌프,6.보일러,7.가습기
-                            if (actuator_Num == 1) {
-                            	
-                                if (actuator_State == 0) {
-                                    alert("1변경됐습니다.");
-								<% actu_Status.setAct_feed(1);%>  
-								
-								console.log(<%=actu_Status.getAct_feed() %>);
-								
-								
-								 <% session.setAttribute("Actuator_Status_All", actu_Status);%>
-								 
-								 location.href="farmControlSet.do";
-								
-							} else if (actuator_State == 1) {
-                                    alert("2변경됐습니다.");
-								<% actu_Status.setAct_feed(0);%>
-								
-								console.log(<%=actu_Status.getAct_feed() %>);
-								
-								 <% session.setAttribute("Actuator_Status_All", actu_Status);%>
-								 
-								 location.href="farmControlSet.do";
-									}
-                          	 	 }
-                            
-                            }
-                    </script>
+		function action_actuator_State(actuator_Num, actuator_State) {
+		
+	
+			location.href="farmControlSet.do?actnum=" +actuator_Num + "&actState="+ actuator_State;
+		
+		}
+      </script>
 </body>
 
 </html>
