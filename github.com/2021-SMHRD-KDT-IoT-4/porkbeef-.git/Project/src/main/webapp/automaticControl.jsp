@@ -102,6 +102,14 @@ body, input, select, textarea {
 	color: rgba(255, 255, 255, 0.75);
 	text-decoration: none;
 }
+
+input[type="submit"].fit,
+            input[type="reset"].fit,
+            input[type="button"].fit,
+            .button.fit {
+                border: 2px solid #FFF;
+            }
+            
 </style>
 
 </head>

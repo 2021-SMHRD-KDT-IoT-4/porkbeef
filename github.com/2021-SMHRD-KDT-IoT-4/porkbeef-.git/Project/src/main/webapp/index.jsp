@@ -106,6 +106,13 @@ body, input, select, textarea {
     text-decoration: none;
 }
 
+input[type="submit"].fit,
+            input[type="reset"].fit,
+            input[type="button"].fit,
+            .button.fit {
+                border: 2px solid #FFF;
+            }
+            
 </style>
 
 </head>
