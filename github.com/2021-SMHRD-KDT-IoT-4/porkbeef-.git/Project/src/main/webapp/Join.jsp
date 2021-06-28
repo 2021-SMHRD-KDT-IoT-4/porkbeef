@@ -17,19 +17,14 @@
 
         <style type="text/css">
             .wrapper.style1 {
-                padding-top: 4em;
+                padding-top: 15em;
+                padding-bottom: 14em;
                 background-size: cover;
                 background-attachment: fixed;
                 -webkit-backface-visibility: hidden;
                 -webkit-transform: translateZ(0);
             }
 
-            .wrapper.style2 {
-                padding: 5em;
-                background: #d84780;
-                color: white;
-                margin: 10em;
-            }
 
             input[type="submit"].alt,
             input[type="button"].alt,
@@ -55,6 +50,7 @@
                 text-decoration: none;
                 width: 100%;
                 border-radius: 6px;
+                opacity: 0.7;
             }
 
             table {
@@ -64,19 +60,20 @@
             }
 
             #button {
-                text-align-last: center;
+                position: relative;
+                left: 18.5em;
             }
 
             #txt {
                 color: white;
                 float: right;
                 position: relative;
-                top: 312px;
-                right: 840px;
+                top: 19.5em;
+                right: 68em;
             }
 
             form {
-                width: 60%;
+                width: 45%;
                 margin: auto;
             }
         </style>
@@ -84,35 +81,35 @@
 
     <body>
         <div class="wrapper style1">
-            <div class="wrapper style2">
 
-                <span id="txt"></span>
+            <span id="txt"></span>
 
-                <form action="Join.do">
-                    <table>
-                        <tr>
-                            <td><input type="text" name="mb_id" placeholder="아이디" /><br></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="password" id="PW" name="mb_pw" placeholder="비밀번호" /><br>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input type="password" id="PWCheck" name="PWCheck" placeholder="비밀번호 재확인"
-                                    onchange="pwcheck()" /><br>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="nick_name" placeholder="닉네임" /><br></td>
-                        </tr>
-                        <tr>
-                            <td id=button><input type="submit" class="button alt" value="회원가입"></td>
-                        </tr>
-                    </table>
-                </form>
+            <form action="Join.do">
+                <table>
+                    <tr>
+                        <td><input type="text" name="mb_id" placeholder="아이디" /><br></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="password" id="PW" name="mb_pw" placeholder="비밀번호" /><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="password" id="PWCheck" name="PWCheck" placeholder="비밀번호 재확인"
+                                onchange="pwcheck()" /><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="nick_name" placeholder="닉네임" /><br></td>
+                    </tr>
+                </table>
 
-            </div>
+
+                <span id=button><input type="submit" class="button alt" value="회원가입" />
+
+                    <input type="button" class="button alt" value="뒤로가기" onclick="location.href='Login.jsp';" />
+                </span>
+            </form>
         </div>
 
         <script>
@@ -128,7 +125,6 @@
                 } else {
                     document.getElementById("txt").innerText = "비밀번호 불일치";
                 }
-
             }
 
         </script>

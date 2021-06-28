@@ -1,41 +1,126 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-		<title>로그인</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<script src="js/jquery.min.js"></script>
-		<script src="js/jquery.dropotron.min.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-layers.min.js"></script>
-		<script src="js/init.js"></script>
-		<noscript>
-			<link rel="stylesheet" href="css/skel.css" />
-			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-wide.css" />
-		</noscript>
-		
-</head>
-<body>
-	<div class="wrapper style1">
-				<!-- Page -->
-		<div id="page" class="container">
-			<form action="Login.do" method="post">
-				<input type="text" name ="mb_id" placeholder="ID를 입력하세요">
-				<input type="password" name ="mb_pw" placeholder="PW를 입력하세요">
-				<input type="submit" value="LogIn" class="button fit">
-				<div style="height: 30px"></div>
-				<input type="button" value="Join" class="button fit"
-				onClick="location.href='Join.jsp'">
-			</form>
-		</div>
-	</div>
-<div class="wrapper style1"></div>
-<div class="wrapper style1"></div>
-<div class="wrapper style1"></div>
-	
-</body>
-</html>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR" %>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <title>로그인</title>
+        <meta charset="EUC-KR">
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/skel.min.js"></script>
+        <script src="js/init.js"></script>
+
+        <script src="js/jquery.dropotron.min.js"></script>
+        <script src="js/skel-layers.min.js"></script>
+
+        <style type="text/css">
+            .wrapper.style1 {
+                padding-top: 2em;
+                padding-bottom: 15em;
+                background-size: cover;
+                background-attachment: fixed;
+                -webkit-backface-visibility: hidden;
+                -webkit-transform: translateZ(0);
+            }
+
+
+            input[type="submit"].alt,
+            input[type="button"].alt,
+            .button.alt {
+                border: 2px solid #FFF;
+            }
+
+            input[type="text"],
+            input[type="password"],
+            textarea {
+
+                line-height: 2em;
+                -moz-appearance: none;
+                -webkit-appearance: none;
+                -o-appearance: none;
+                -ms-appearance: none;
+                appearance: none;
+                background: white;
+                color: #555555;
+                display: -webkit-box;
+                outline: 0;
+                padding: 1em 1em;
+                text-decoration: none;
+                width: 100%;
+                border-radius: 6px;
+                opacity: 0.7;
+            }
+
+            table {
+                width: 60%;
+                margin: auto;
+                white-space: pre-line;
+            }
+
+            #button {
+                text-align-last: center;
+            }
+
+            #txt {
+                color: white;
+                float: right;
+                position: relative;
+                top: 312px;
+                right: 840px;
+            }
+
+            form {
+    width: 110%;
+    margin: auto;
+}
+
+            #page {
+                position: relative;
+                background: space;
+                padding: 9.5em;
+                border-radius: 25px;
+                bottom: -70px;
+            }
+
+            input[type="submit"].fit, input[type="reset"].fit, input[type="button"].fit, .button.fit {
+    width: 60%;
+    border: 2px solid #FFF;
+}
+        </style>
+    </head>
+
+    <body>
+
+        <div class="wrapper style1">
+            <div id="page" class="container">
+
+                <form action="Login.do" method="post" style="
+    margin-right: 0px;
+">
+                    <table>
+                        <tr>
+                            <td><input type="text" name="mb_id" placeholder="ID를 입력하세요"><br></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="password" name="mb_pw" placeholder="PW를 입력하세요"><br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="button"><input type="submit" value="로그인" class="button fit"><br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="button"><input type="button" value="회원가입" class="button fit"
+                                    onClick="location.href='Join.jsp'"><br></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </body>
+
+    </html>

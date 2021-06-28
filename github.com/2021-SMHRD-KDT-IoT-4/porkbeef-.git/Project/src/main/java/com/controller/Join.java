@@ -1,12 +1,9 @@
 package com.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import com.Model.MemberDTO;
 import com.Model.UserDAO;
 
@@ -33,7 +30,6 @@ public class Join implements Command {
 
 			System.out.println("회원가입 실패");
 			response.sendRedirect("Join.jsp");
-
 		}
 	}
 }

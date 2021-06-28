@@ -2,27 +2,21 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.Model.UserDAO"%>
 <%@page import="com.Model.MemberDTO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
         <title>회원가입</title>
-        <meta charset="EUC-KR">
+         <meta charset="EUC-KR">
         <meta name="description" content="" />
         <meta name="keywords" content="" />
 
         <script src="js/jquery.min.js"></script>
-        <% //배경화면1 %>
-            <script src="js/skel.min.js"></script>
-            <% //배경화면2 %>
-                <script src="js/init.js"></script>
-                <% //배경화면3 %>
-                    <%-- <script src="js/jquery.dropotron.min.js">
-                        </script>
-                        <% //?? %>
-                            <script src="js/skel-layers.min.js"></script>
-                            <% //?? %> --%>
+        <script src="js/skel.min.js"></script>
+        <script src="js/init.js"></script>
+
+        <script src="js/jquery.dropotron.min.js"></script>
+        <script src="js/skel-layers.min.js"></script>
                             
                             
          <style>

@@ -1,24 +1,21 @@
 <%@page import="com.Model.Domestic_AnimalsDTO"%>
 <%@page import="com.Model.MemberDTO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>µÅÁöÇöÈ²</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery.dropotron.min.js"></script>
-<script src="js/skel.min.js"></script>
-<script src="js/skel-layers.min.js"></script>
-<script src="js/init.js"></script>
-<noscript>
-	<link rel="stylesheet" href="css/skel.css" />
-	<link rel="stylesheet" href="css/style.css" />
-	<link rel="stylesheet" href="css/style-wide.css" />
-</noscript>
+ <meta charset="EUC-KR">
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/skel.min.js"></script>
+        <script src="js/init.js"></script>
+
+        <script src="js/jquery.dropotron.min.js"></script>
+        <script src="js/skel-layers.min.js"></script>
+
 <style>
 .table {
 	border: 5px solid black !important;

@@ -18,12 +18,6 @@ public class SetActuatorStatusCon implements Command {
 	@Override
 	public void command(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		int act_feed = Integer.parseInt(request.getParameter("act_feed"));
-
-		
-		
-		System.out.println(act_feed);
-
 		HttpSession session = request.getSession();
 
 		Actuator_Status_DTO actuator_Status_All = (Actuator_Status_DTO) session.getAttribute("Actuator_Status_All");
