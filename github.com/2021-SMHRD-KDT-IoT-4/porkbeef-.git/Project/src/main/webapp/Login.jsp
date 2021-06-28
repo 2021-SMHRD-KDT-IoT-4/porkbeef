@@ -7,7 +7,7 @@
         <meta charset="EUC-KR">
         <meta name="description" content="" />
         <meta name="keywords" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=1024, height=768" />
 
         <script src="js/jquery.min.js"></script>
         <script src="js/skel.min.js"></script>
@@ -18,14 +18,12 @@
 
         <style type="text/css">
             .wrapper.style1 {
-                padding-top: 2em;
                 padding-bottom: 15em;
                 background-size: cover;
                 background-attachment: fixed;
                 -webkit-backface-visibility: hidden;
                 -webkit-transform: translateZ(0);
             }
-
 
             input[type="submit"].alt,
             input[type="button"].alt,
@@ -36,7 +34,6 @@
             input[type="text"],
             input[type="password"],
             textarea {
-
                 line-height: 2em;
                 -moz-appearance: none;
                 -webkit-appearance: none;
@@ -60,10 +57,6 @@
                 white-space: pre-line;
             }
 
-            #button {
-                text-align-last: center;
-            }
-
             #txt {
                 color: white;
                 float: right;
@@ -73,9 +66,9 @@
             }
 
             form {
-    width: 110%;
-    margin: auto;
-}
+                width: 110%;
+                margin: auto;
+            }
 
             #page {
                 position: relative;
@@ -85,37 +78,40 @@
                 bottom: -70px;
             }
 
-            input[type="submit"].fit, input[type="reset"].fit, input[type="button"].fit, .button.fit {
-    width: 60%;
-    border: 2px solid #FFF;
-}
+            input[type="submit"].fit,
+            input[type="reset"].fit,
+            input[type="button"].fit,
+            .button.fit {
+                width: 60%;
+                border: 2px solid #FFF;
+            }
         </style>
     </head>
 
     <body>
 
-        <div class="wrapper style1">
-            <div id="page" class="container">
+        <div class="wrapper style1" style="height: 768px;; padding-top: 0px; padding-bottom: 0px;">
 
-                <form action="Login.do" method="post" style="
-    margin-right: 0px;
-">
+            <div id="page" class="container"
+                style="height: 384px; margin-left: 0px; margin-right: 0px; padding-bottom: 210px; padding-right: 250px; padding-top: 210px; padding-left: 250px; top: 0px; bottom: 0px;">
+
+                <form action="Login.do" method="post"
+                    style="width: 550px; margin-right: 0px; height: 200px; margin-left: 0px;">
                     <table>
                         <tr>
                             <td><input type="text" name="mb_id" placeholder="ID를 입력하세요"><br></td>
                         </tr>
                         <tr>
-                            <td>
-                                <input type="password" name="mb_pw" placeholder="PW를 입력하세요"><br>
-                            </td>
+                            <td><input type="password" name="mb_pw" placeholder="PW를 입력하세요"><br></td>
                         </tr>
                         <tr>
-                            <td id="button"><input type="submit" value="로그인" class="button fit"><br>
-                            </td>
+                            <td id="button"><input type="submit" value="로그인" class="button fit"
+                                    style="margin-left: 65px; margin-right: 65px; margin-bottom: 5px;"><br></td>
                         </tr>
                         <tr>
                             <td id="button"><input type="button" value="회원가입" class="button fit"
-                                    onClick="location.href='Join.jsp'"><br></td>
+                                    onClick="location.href='Join.jsp'"
+                                    style="margin-left: 65px; margin-right: 65px; margin-bottom: 5px;"></td>
                         </tr>
                     </table>
                 </form>
