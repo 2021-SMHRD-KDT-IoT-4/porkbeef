@@ -92,17 +92,23 @@
 
     <body>
 
-        <div class="wrapper style1" style="height: 768px;; padding-top: 0px; padding-bottom: 0px;">
+	<div class="wrapper style1"
+		style="height: 768px;; padding-top: 0px; padding-bottom: 0px;">
 
-            <div id="page" class="container"
-                style="height: 384px; margin-left: 0px; margin-right: 0px; padding-bottom: 210px; padding-right: 250px; padding-top: 210px; padding-left: 250px; top: 0px; bottom: 0px;">
+		<div id="page" class="container"
+			style="height: 384px; margin-left: 0px; margin-right: 0px; padding-bottom: 0px; padding-right: 250px; padding-top: 90px; padding-left: 250px; top: 0px; bottom: 0px;">
 
-                <form action="Login.do" method="post"
-                    style="width: 550px; margin-right: 0px; height: 200px; margin-left: 0px;">
-                    <table>
-                        <tr>
-                            <td><input type="text" name="mb_id" placeholder="ID를 입력하세요"><br></td>
-                        </tr>
+			<div>
+				<input type="image" src="./images/icon_back.png"
+					style="width: 350px; padding-left: 0px; margin-left: 100px;">
+			</div>
+
+			<form action="Login.do" method="post"
+				style="width: 550px; margin-right: 0px; height: 200px; margin-left: 0px;">
+				<table>
+					<tr>
+						<td><input type="text" name="mb_id" placeholder="ID를 입력하세요"><br></td>
+					</tr>
 					<tr>
 						<td><input type="password" name="mb_pw"
 							placeholder="PW를 입력하세요"><br></td>
@@ -117,13 +123,14 @@
 						<td id="button"
 							style="padding-left: 110px; padding-right: 110px; padding-bottom: 5px;"><input
 							type="button" value="회원가입" class="button fit"
-							onClick="location.href='Join.jsp'" style="margin-left: 0px; margin-right: 0px; margin-bottom: 5px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; width: 112px;"></td>
+							onClick="location.href='Join.jsp'"
+							style="margin-left: 0px; margin-right: 0px; margin-bottom: 5px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; width: 112px;"></td>
 					</tr>
 				</table>
-                
-                </form>
-            </div>
-        </div>
-    </body>
+
+			</form>
+		</div>
+	</div>
+</body>
 
     </html>

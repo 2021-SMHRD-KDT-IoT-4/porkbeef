@@ -99,7 +99,8 @@ body, input, select, textarea {
 	transition: color 0.35s ease-in-out;
 	display: inline-block;
 	color: #ddd;
-	color: rgba(255, 255, 255, 0.75);
+	color: black;
+	font-weight: 900;
 	text-decoration: none;
 }
 
@@ -120,15 +121,17 @@ input[type="submit"].fit,
 	%>
 
 	<div class="wrapper style1"
-		style="height: 768px; padding-top: 0px; padding-bottom: 0px;">
+		style="height: 700px; padding-top: 1px; padding-bottom: 0px;">
 
 
 		<div id="header" class="skel-panels-fixed"
 			style="bottom: 690px; padding-right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px;">
 			<div id="logo"
-				style="border-top-width: 0px; padding-top: 14px; padding-bottom: 10px; padding-left: 55px; padding-right: 10px;">
+				style="border-top-width: 0px; padding-top: 0px; padding-bottom: 0px; padding-left: 0px;">
 				<h1>
-					<a href="index.jsp">소관리돼지</a>
+					<a href="index.jsp"><input type="image"
+						src="./images/icon_back.png"
+						style="width: 115px; padding-left: 0px; margin-left: 18px; margin-top: 17px;"></a>
 				</h1>
 			</div>
 			<nav id="nav" style="bottom: 0px; padding-top: 0px;">
@@ -136,7 +139,9 @@ input[type="submit"].fit,
 					<li
 						style="white-space: nowrap; padding-top: 0px; padding-right: 20px; padding-bottom: 0px; padding-left: 20px;"><a
 						href="farmControl.do">축사 제어</a></li>
-					<%if(user!=null && user.getMb_grade() < 2){ %>
+					<%
+					if (user != null && user.getMb_grade() < 2) {
+					%>
 					<li
 						style="white-space: nowrap; padding-top: 0px; padding-right: 20px; padding-bottom: 0px; padding-left: 20px;"><a
 						href="automaticControl.do">자동 제어</a></li>
@@ -146,7 +151,9 @@ input[type="submit"].fit,
 					<li
 						style="white-space: nowrap; padding-top: 0px; padding-right: 20px; padding-bottom: 0px; padding-left: 20px;"><a
 						href="domesticAnimals.do">돼지 현황</a></li>
-					<%} %>
+					<%
+					}
+					%>
 					<li
 						style="white-space: nowrap; padding-top: 0px; padding-right: 20px; padding-bottom: 0px; padding-left: 20px;"><a
 						href="logout.do">로그아웃</a></li>

@@ -24,9 +24,8 @@
 <script src="js/skel-layers.min.js"></script>
 
 <style type="text/css">
-
 .wrapper.style1 {
-background: url(./images/back.jpg) no-repeat center top;
+	background: url(./images/back.jpg) no-repeat center top;
 	padding-top: 11em;
 	padding-bottom: 24em;
 	background-size: cover;
@@ -95,24 +94,22 @@ body, input, select, textarea {
 }
 
 #nav ul li a {
-    -moz-transition: color 0.35s ease-in-out;
-    -webkit-transition: color 0.35s ease-in-out;
-    -o-transition: color 0.35s ease-in-out;
-    -ms-transition: color 0.35s ease-in-out;
-    transition: color 0.35s ease-in-out;
-    display: inline-block;
-    color: #ddd;
-    color: rgba(255, 255, 255, 0.75);
-    text-decoration: none;
+	-moz-transition: color 0.35s ease-in-out;
+	-webkit-transition: color 0.35s ease-in-out;
+	-o-transition: color 0.35s ease-in-out;
+	-ms-transition: color 0.35s ease-in-out;
+	transition: color 0.35s ease-in-out;
+	display: inline-block;
+	color: #ddd;
+	color: black;
+	font-weight: 900;
+	text-decoration: none;
 }
 
-input[type="submit"].fit,
-            input[type="reset"].fit,
-            input[type="button"].fit,
-            .button.fit {
-                border: 2px solid #FFF;
-            }
-            
+input[type="submit"].fit, input[type="reset"].fit, input[type="button"].fit,
+	.button.fit {
+	border: 2px solid #FFF;
+}
 </style>
 
 </head>
@@ -172,9 +169,11 @@ input[type="submit"].fit,
 		<div id="header" class="skel-panels-fixed"
 			style="bottom: 690px; padding-right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px;">
 			<div id="logo"
-				style="border-top-width: 0px; padding-top: 14px; padding-bottom: 10px; padding-left: 55px; padding-right: 10px;">
+				style="border-top-width: 0px; padding-top: 0px; padding-bottom: 0px; padding-left: 0px;">
 				<h1>
-					<a href="index.jsp">¼Ò°ü¸®µÅÁö</a>
+					<a href="index.jsp"><input type="image"
+						src="./images/icon_back.png"
+						style="width: 115px; padding-left: 0px; margin-left: 18px; margin-top: 17px;"></a>
 				</h1>
 			</div>
 			<nav id="nav" style="bottom: 0px; padding-top: 0px;">
