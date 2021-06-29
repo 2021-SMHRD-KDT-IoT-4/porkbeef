@@ -180,9 +180,10 @@ input[type="submit"], input[type="reset"], input[type="button"], .button
 
 		<!-- ¸öÃ¼ -->
 		<div id="banner" class="container"
-			style="margin-left: 100px; margin-right: 100px; margin-bottom: 145px; padding-right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px; margin-top: 145px;">
+			style="margin-left: 100px; margin-right: 100px; margin-bottom: 100px; padding-right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px; margin-top: 100px;">
 
-			<form action="updateMember.do" method="post">
+			<form action="updateMember.do" method="post"
+				style="margin-left: 0px; margin-right: 0px;">
 
 				<%
 				UserDAO dao = new UserDAO();
@@ -191,7 +192,7 @@ input[type="submit"], input[type="reset"], input[type="button"], .button
 				<div
 					style="background-color: #ffff99b2; width: 50em; height: 30em; padding-top: 100px; padding-left: 0px; padding-bottom: 100px; padding-right: 0px; border-radius: 5em;">
 					<table class="table"
-						style="margin-left: 100px; margin-bottom: 0px; margin-top: 0px; padding-left: 0px; margin-right: 100px; color: black; font-weight: 900; padding-top: 0px;">
+						style="margin-left: 60px; margin-bottom: 0px; margin-top: 0px; padding-left: 0px; margin-right: 60px; color: black; font-weight: 900; padding-top: 0px;">
 						<tr>
 							<td colspan="5"><p
 									style="font-size: 35px; font-family: 'ÈÞ¸ÕµÕ±ÙÇìµå¶óÀÎ'; margin-bottom: 0px; color: #000;">¢ÑÈ¸¿ø°ü¸®¢Ð</p></td>
