@@ -21,7 +21,7 @@ public class Get_Automatic_Con implements Command {
 		request.setCharacterEncoding("EUC-KR");
 
 		automatic_DAO = new Automatic_Control_DAO();
-		automatic_DTO = automatic_DAO.Automatic_SRead();
+		automatic_DTO = automatic_DAO.get_Automatic_SRead();
 
 		if (automatic_DTO != null) {
 			session.setAttribute("Automatic", automatic_DTO);

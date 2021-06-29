@@ -74,7 +74,7 @@ public class Automatic_Control_DAO {
 		return state_Check;
 	}
 
-	public Automatic_Control_DTO Automatic_SRead() {
+	public Automatic_Control_DTO get_Automatic_SRead() {
 
 		try {
 

@@ -19,6 +19,7 @@ import com.controller.Logout;
 import com.controller.SetActuatorStatusCon;
 import com.controller.UpdateMember;
 import com.controller.Update_Automatic_Con;
+import com.controller.arduinoGetSetPage;
 
 @WebServlet("*.do")
 public class front_Controller extends HttpServlet {
@@ -53,6 +54,8 @@ public class front_Controller extends HttpServlet {
 			_interface = new SetActuatorStatusCon();
 		}else if (result_URI.equals("logout.do")) {
 			_interface = new Logout();
+		}else if (result_URI.equals("qp.do")) {
+			_interface = new arduinoGetSetPage();
 		}
 		
 		
