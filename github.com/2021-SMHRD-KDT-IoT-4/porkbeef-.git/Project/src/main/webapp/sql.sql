@@ -83,7 +83,7 @@ insert into members values('pig', 'pig', 3, 'pig');
 insert into members values('manage', 'manage', 0, 'manage');
 select * from members;
 
-
+けいしかいぉし
 select * from domestic_animals;
 insert into automatic_control values('20:20:20',12,31,3,4,5,6,7,8);
 insert into domestic_animals values(2,500,sysdate,sysdate,sysdate,sysdate,sysdate,2);

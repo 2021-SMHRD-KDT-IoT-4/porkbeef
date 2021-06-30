@@ -60,4 +60,9 @@ public class Entire_Environment_DTO {
 		this.humi = humi;
 		this.gas = gas;
 	}
+	public Entire_Environment_DTO( int temp, int humi, int gas) {
+		this.temp = temp;
+		this.humi = humi;
+		this.gas = gas;
+	}
 }

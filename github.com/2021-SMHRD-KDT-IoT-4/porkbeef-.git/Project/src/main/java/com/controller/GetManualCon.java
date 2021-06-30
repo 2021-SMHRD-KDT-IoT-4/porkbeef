@@ -17,15 +17,6 @@ public class GetManualCon implements Command {
 
 		HttpSession session = request.getSession();
 
-//		int act_feed = Integer.parseInt(request.getParameter("act_feed")); 
-//		int act_door = Integer.parseInt(request.getParameter("act_door")); 
-//		int act_absor = Integer.parseInt(request.getParameter("act_absor")); 
-//		int act_aircon = Integer.parseInt(request.getParameter("act_aircon"));
-//		int act_pump = Integer.parseInt(request.getParameter("act_pump")); 
-//		int act_boil = Integer.parseInt(request.getParameter("act_boil"));
-//		int act_humid = Integer.parseInt(request.getParameter("act_humid")); 
-//		int enableGrade = Integer.parseInt(request.getParameter("enableGrade"));
-
 		Manual_Control_DAO dao = new Manual_Control_DAO();
 		Manual_Control_DTO manual = dao.GetManual();
 

@@ -54,7 +54,7 @@ public class front_Controller extends HttpServlet {
 			_interface = new SetActuatorStatusCon();
 		}else if (result_URI.equals("logout.do")) {
 			_interface = new Logout();
-		}else if (result_URI.equals("qp.do")) {
+		}else if (result_URI.indexOf("qp.do")>=0) {
 			_interface = new arduinoGetSetPage();
 		}
 		

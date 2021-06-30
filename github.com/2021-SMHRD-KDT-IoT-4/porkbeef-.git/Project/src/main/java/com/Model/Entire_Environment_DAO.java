@@ -84,14 +84,13 @@ public class Entire_Environment_DAO {
 		try {
 			Environment_Connetion();
 
-			String sql = "insert into ENTIRE_ENVIRONMENT VALUES (entire_seq_num.nextval,?,?,?,?)";
+			String sql = "insert into ENTIRE_ENVIRONMENT VALUES (entire_seq_num.nextval,sysdate,?,?,?)";
 
 			prepar_statement = connetion.prepareStatement(sql);
 
-			prepar_statement.setString(1, environ_dto.getCheck_time());
-			prepar_statement.setInt(2, environ_dto.getTemp());
-			prepar_statement.setInt(3, environ_dto.getHumi());
-			prepar_statement.setInt(4, environ_dto.getGas());
+			prepar_statement.setInt(1, environ_dto.getTemp());
+			prepar_statement.setInt(2, environ_dto.getHumi());
+			prepar_statement.setInt(3, environ_dto.getGas());
 
 			state_Check = prepar_statement.executeUpdate();
 

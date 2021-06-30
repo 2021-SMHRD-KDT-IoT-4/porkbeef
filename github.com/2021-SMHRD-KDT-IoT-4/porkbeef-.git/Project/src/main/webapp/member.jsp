@@ -185,8 +185,6 @@ input[type="submit"], input[type="reset"], input[type="button"], .button
 		<div id="banner" class="container"
 			style="margin-left: 100px; margin-right: 100px; margin-bottom: 100px; padding-right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px; margin-top: 100px;">
 
-			<form action="updateMember.do" method="post"
-				style="margin-left: 0px; margin-right: 0px;">
 
 				<%
 				UserDAO dao = new UserDAO();
@@ -212,31 +210,34 @@ input[type="submit"], input[type="reset"], input[type="button"], .button
 						for (int i = 0; i < list.size(); i++) {
 						%>
 
-						<tr>
-							<td class="td" align="center"><%=list.get(i).getMb_id()%></td>
-							<td class="td" align="center"><%=list.get(i).getNick_name()%></td>
-							<td class="td" align="center"><%=list.get(i).getMb_grade()%></td>
-							<td class="td" align="center"><select id="grade"
-								name="mb_grade"
-								style="border-top-width: 2px; border-right-width: 2px; border-left-width: 2px; border-bottom-width: 2px;">
-									<option value="none">====선택====</option>
-									<option value="0">0</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-							</select></td>
-							<td class="td" align="center"><input type="submit"
-								value="등급 수정"
-								style="padding-right: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 5px; margin-top: 5px; margin-right: 0px; margin-left: 0px; height: 45px; width: 80px;"></td>
-							<td><input type="hidden" name="mb_id"
-								value="<%=list.get(i).getMb_id()%>"></td>
-						</tr>
+						<form action="updateMember.do" method="post"
+								style="margin-left: 0px; margin-right: 0px;">
+							<tr>
+									<td class="td" align="center"><%=list.get(i).getMb_id()%></td>
+									<td class="td" align="center"><%=list.get(i).getNick_name()%></td>
+									<td class="td" align="center"><%=list.get(i).getMb_grade()%></td>
+									<td class="td" align="center"><select id="grade"
+										name="mb_grade"
+										style="border-top-width: 2px; border-right-width: 2px; border-left-width: 2px; border-bottom-width: 2px;">
+											<option value="none">====선택====</option>
+											<option value="0">0</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+									</select></td>
+									<td class="td" align="center"><input type="submit"
+										value="등급 수정"
+										style="padding-right: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 5px; margin-top: 5px; margin-right: 0px; margin-left: 0px; height: 45px; width: 80px;"></td>
+									<td><input type="hidden" name="mb_id"
+										value="<%=list.get(i).getMb_id()%>"></td>
+							</tr>
+						</form>
 						<%
 						}
 						%>
 					</table>
 				</div>
-			</form>
+		
 		</div>
 
 	</div>
