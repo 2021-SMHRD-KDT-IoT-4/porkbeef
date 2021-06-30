@@ -13,8 +13,6 @@ import com.Model.Entire_Environment_DTO;
 import com.Model.MemberDTO;
 import com.Model.UserDAO;
 
-
-
 public class Login implements Command {
 
 	@Override
@@ -39,7 +37,7 @@ public class Login implements Command {
 			ArrayList<Entire_Environment_DTO> environ_DTO_list = eedao.Environment_ARead();
 
 			if (environ_DTO_list.size() != 0) {
-				
+
 				Entire_Environment_DTO entire_environment_DTO = environ_DTO_list.get(environ_DTO_list.size() - 1);
 				session = request.getSession();
 
@@ -56,11 +54,11 @@ public class Login implements Command {
 			Domestic_AnimalsDTO[] dtos = dadao.getinfo();
 
 			if (dtos.length > 1) {
-				
+
 				session = request.getSession();
 				session.setAttribute("animalDB", dtos);
 				System.out.println("가축 정보 조회 성공");
-				
+
 			} else {
 				System.out.println("조회 실패");
 			}

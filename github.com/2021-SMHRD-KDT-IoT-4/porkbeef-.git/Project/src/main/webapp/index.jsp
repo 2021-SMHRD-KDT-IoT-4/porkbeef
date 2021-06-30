@@ -1,3 +1,4 @@
+<%@page import="com.Model.Crawling_Wether_DAO"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.time.LocalDateTime"%>
 <%@page import="java.util.Date"%>
@@ -114,7 +115,6 @@ input[type="submit"].fit, input[type="reset"].fit, input[type="button"].fit,
 
 </head>
 <body>
-
 	<%
 	    MemberDTO user = (MemberDTO)session.getAttribute("user");	
 		Entire_Environment_DTO entire_environment_DTO = null;
@@ -203,33 +203,45 @@ input[type="submit"].fit, input[type="reset"].fit, input[type="button"].fit,
 			</nav>
 		</div>
 
+		<%
+		Crawling_Wether_DAO wether_dao = new Crawling_Wether_DAO();
 
-		<table style="margin-left: 200px; margin-bottom: 0px; padding-left: 0px; margin-right: 200px; height: 100px; margin-top: 70px;">
+		String temp_Pas = wether_dao.Temp_Parser();
+		String weater_Pas = wether_dao.Weather_Parser();
+		%>
+
+		<table
+			style="margin-left: 200px; margin-bottom: 0px; padding-left: 0px; margin-right: 200px; height: 100px; margin-top: 60px;">
 
 			<tr>
-			<td>
-				<section class="4u" style="height: 185px; width: 195px;">
-					<a href="#" class="image featured"
-						style="margin-right: 0px; padding-right: 30px;"> <img
-						src="images/pic01.png" class="img"></a> <span class="box"
-						style="margin-left: 17px; margin-top: 0px;">온도:<%=entire_environment_DTO.getTemp()%>º
-						습도:<%=entire_environment_DTO.getHumi()%>%
-					</span>
-				</section>
-			<td>
-				<section class="4u" style="height: 185px; width: 195px;">
-					<a href="#" class="image featured"
-						style="margin-right: 0px; padding-right: 30px;"><img
-						src="images/pic02.png" class="img" id="weatherImg"
-						style="margin-bottom: 10px;"></a> <span class="box"
-						style="margin-left: 17px; margin-top: 0px;">온도:<%=entire_environment_DTO.getTemp() %>º
-						습도:<%=entire_environment_DTO.getHumi() %>%
-					</span>
-				</section>
-			</td>
-		</tr>
+				<td>
+					<section class="4u" style="height: 185px; width: 195px;">
+						<a href="#" class="image featured"
+							style="margin-right: 0px; padding-right: 30px;"> <img
+							src="images/pic01.png" class="img"></a>
+						<div class="box"
+							style="margin-left: 15px; margin-top: 0px; padding-bottom: 10px; padding-top: 10px; padding-left: 0px; padding-right: 0px; margin-right: 15px;">
+							온도:<%=entire_environment_DTO.getTemp()%>º <br> <span>
+								습도:<%=entire_environment_DTO.getHumi()%>%
+							</span>
+						</div>
+					</section>
+				<td>
+					<section class="4u" style="height: 185px; width: 195px;">
+						<a href="#" class="image featured"
+							style="margin-right: 0px; padding-right: 30px;"><img
+							src="images/pic02.png" class="img" id="weatherImg"
+							style="margin-bottom: 0px;"></a>
+						<div class="box"
+							style="margin-left: 0px; padding-bottom: 10px; padding-top: 10px; width: 220px;"><%=temp_Pas%><br>
+							<span><%=weater_Pas%></span>
+						</div>
+
+					</section>
+				</td>
+			</tr>
 			<tr>
-				<td style="padding-top: 70px;">
+				<td style="padding-top: 80px;">
 					<section class="4u" style="height: 185px; width: 195px;">
 						<a href="#" class="image featured"
 							style="margin-right: 0px; padding-right: 30px;"><img
@@ -246,8 +258,9 @@ input[type="submit"].fit, input[type="reset"].fit, input[type="button"].fit,
 						<a href="#" class="image featured"
 							style="margin-right: 0px; padding-right: 30px;"><img
 							src="images/pic04.png" class="img"></a>
-						<div class="box" style="margin-left: 17px; padding-bottom: 10px; padding-top: 10px;">가까운 출하예정일
-							<span><%=nearForwadDate.format(DateTimeFormatter.ofPattern("yyyy년MM월dd일"))%></span>
+						<div class="box"
+							style="margin-left: 17px; padding-bottom: 10px; padding-top: 10px;">
+							가까운 출하예정일 <span><%=nearForwadDate.format(DateTimeFormatter.ofPattern("yyyy년MM월dd일"))%></span>
 						</div>
 					</section>
 				</td>
