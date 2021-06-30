@@ -18,7 +18,7 @@ public class Crawling_Wether_DAO {
 			String URL = "https://weather.naver.com/today/05155720"; // 1. 수집 대상 URL
 
 			StringBuilder stringBuilder = null;
-
+ 
 			// 2. Connection
 			Connection conn = Jsoup.connect(URL);
 
