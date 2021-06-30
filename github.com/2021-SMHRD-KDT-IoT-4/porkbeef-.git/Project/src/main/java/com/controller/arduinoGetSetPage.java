@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
@@ -22,9 +23,10 @@ public class arduinoGetSetPage implements Command {
 		int humi = Integer.parseInt(request.getParameter("h"));
 		int temp = Integer.parseInt(request.getParameter("t"));
 		int gas = Integer.parseInt(request.getParameter("g"));
-
+		PrintWriter out = response.getWriter();
 		
 		String json = "null";
+		Actuator_Status_DTO asDTO =null;
 		Entire_Environment_DTO eeDTO = new Entire_Environment_DTO(humi, temp, gas);
 		
 		int eAW_Cnt = new Entire_Environment_DAO().Environment_AWrite 
@@ -32,11 +34,25 @@ public class arduinoGetSetPage implements Command {
 
 		if(eAW_Cnt>0) {			
 			Automatic_Control_DTO acDTO = new Automatic_Control_DAO().get_Automatic_SRead();
-			Actuator_Status_DTO asDTO = calculate(eeDTO, acDTO);
-			
-			
+			asDTO = calculate(eeDTO, acDTO);
+			json = "{"
+					+ "\"f\":\""+asDTO.getAct_feed()+"\","
+					+ "\"d\":\""+asDTO.getAct_door()+"\","
+					+ "\"ab\":\""+asDTO.getAct_absor()+"\","
+					+ "\"ai\":\""+asDTO.getAct_aircon()+"\","
+					+ "\"p\":\""+asDTO.getAct_pump()+"\","
+					+ "\"b\":\""+asDTO.getAct_boil()+"\","
+					+ "\"humi\":\""+asDTO.getAct_humid()+""
+					+ "}";
 		}
-
+		
+		
+		if(asDTO != null) {
+			asDTO.setAct_feed(0);
+			new Actuator_Status_DAO().SetActuatorStatus(asDTO);
+		}
+		
+		out.print(json);
 		// 비교하고
 
 //		db 인젝트
