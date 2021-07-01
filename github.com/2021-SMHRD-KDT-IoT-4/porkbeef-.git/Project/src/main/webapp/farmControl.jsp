@@ -118,8 +118,9 @@ input[type="submit"].fit,
 	<%
 	// 로그인을 했을때 저장한 session 값 불러오기
 	MemberDTO user = (MemberDTO) session.getAttribute("user");
-	%>
-
+	if(user ==null){
+		response.sendRedirect("Login.jsp");
+	}else{%>
 	<div class="wrapper style1"
 		style="height: 700px; padding-top: 1px; padding-bottom: 0px;">
 
@@ -163,12 +164,26 @@ input[type="submit"].fit,
 
 		<%
 		Actuator_Status_DTO actu_Status = (Actuator_Status_DTO) session.getAttribute("Actuator_Status_All");
+		String autoMode="자동";
+		if(user!=null){
+				
+			
+			Integer index_1 = (Integer)session.getAttribute("AutoMode");
+			
+			if(index_1 == 1){
+				autoMode="수동";
+			}
+		}
+		
 		%>
 
 		<!-- 몸체 -->
 		<div class="container"
 			style="margin-left: 0px; margin-right: 0px; height: 300px; width: 950px; padding-left: 170px; padding-right: 170px; padding-top: 200px; padding-bottom: 200px;">
-
+			<div>
+			<button onclick="location.href='setManualControllAutoMode.do'">자동전환</button>
+			<span style="color: white;font: bold;">현재상태 : <%=autoMode %></span>
+			</div>
 			<div class="row no-collapse-1"
 				style="margin-left: 0px; width: 1016px;">
 				<form class="4u" action="farmControl.do" method="post"
@@ -374,15 +389,9 @@ input[type="submit"].fit,
 		</div>
 	</div>
 
-	<script>
-
-                        function action_Empty() {
-
-                            alert("로그인 해주세요.");
-                        }
-
-                        </script>
-
+	
+	<%} %>
+	
 	<script type="text/javascript">
                         
                         

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.controller.AutoShift;
 import com.controller.Command;
 import com.controller.GetActuatorStatusCon;
 import com.controller.GetDomesticAnimals;
@@ -52,10 +53,12 @@ public class front_Controller extends HttpServlet {
 			_interface = new Join();
 		} else if (result_URI.indexOf("farmControlSet.do")>=0) {
 			_interface = new SetActuatorStatusCon();
-		}else if (result_URI.equals("logout.do")) {
+		} else if (result_URI.equals("logout.do")) {
 			_interface = new Logout();
-		}else if (result_URI.indexOf("qp.do")>=0) {
+		} else if (result_URI.indexOf("qp.do")>=0) {
 			_interface = new arduinoGetSetPage();
+		} else if (result_URI.equals("setManualControllAutoMode.do")) {
+			_interface = new AutoShift();
 		}
 		
 		
