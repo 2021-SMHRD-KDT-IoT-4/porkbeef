@@ -20,43 +20,41 @@ public class arduinoGetSetPage implements Command {
 
 	@Override
 	public void command(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String json = "null";
+		int humi = Integer.parseInt(request.getParameter("h"));
+		int temp = Integer.parseInt(request.getParameter("t"));
+		int gas = Integer.parseInt(request.getParameter("g"));
 		PrintWriter out = response.getWriter();
-		try {
-			int humi = Integer.parseInt(request.getParameter("h"));
-			int temp = Integer.parseInt(request.getParameter("t"));
-			int gas = Integer.parseInt(request.getParameter("g"));
-			Actuator_Status_DTO asDTO =null;
-			
-			Entire_Environment_DTO eeDTO = new Entire_Environment_DTO(humi, temp, gas);
-			
-			int eAW_Cnt = new Entire_Environment_DAO().Environment_AWrite 
-							(eeDTO);//축사 상태 입력
+		
+		String json = "null";
+		Actuator_Status_DTO asDTO =null;
+		Entire_Environment_DTO eeDTO = new Entire_Environment_DTO(humi, temp, gas);
+		System.out.println("습도:" + humi);
+		System.out.println("온도:" + temp);
+		System.out.println("가스:" + gas);
+		int eAW_Cnt = new Entire_Environment_DAO().Environment_AWrite (eeDTO);//축사 상태 입력
 
-			if(eAW_Cnt>0) {			
-				Automatic_Control_DTO acDTO = new Automatic_Control_DAO().get_Automatic_SRead();
-				asDTO = calculate(eeDTO, acDTO);
-				json = "{"
-						+ "\"f\":\""+asDTO.getAct_feed()+"\","
-						+ "\"d\":\""+asDTO.getAct_door()+"\","
-						+ "\"ab\":\""+asDTO.getAct_absor()+"\","
-						+ "\"ai\":\""+asDTO.getAct_aircon()+"\","
-						+ "\"p\":\""+asDTO.getAct_pump()+"\","
-						+ "\"b\":\""+asDTO.getAct_boil()+"\","
-						+ "\"humi\":\""+asDTO.getAct_humid()+""
-						+ "}";
-			}
-			
-			
-			if(asDTO != null) {
-				asDTO.setAct_feed(0);
-				new Actuator_Status_DAO().SetActuatorStatus(asDTO);
-			}
-			
-		} catch (Exception e) {
-			// TODO: handle exception
+		if(eAW_Cnt>0) {			
+			Automatic_Control_DTO acDTO = new Automatic_Control_DAO().get_Automatic_SRead();
+			asDTO = calculate(eeDTO, acDTO);
+			json = "/{"
+					+ "\"fs\":\""+asDTO.getAct_feed()+"\","
+//					+ "\"d\":\""+asDTO.getAct_door()+"\","
+					+ "\"ab\":\""+asDTO.getAct_absor()+"\","
+					+ "\"ai\":\""+asDTO.getAct_aircon()+"\","
+//					+ "\"p\":\""+asDTO.getAct_pump()+"\","
+					+ "\"b\":\""+asDTO.getAct_boil()+"\","
+					+ "\"h\":\""+asDTO.getAct_humid()
+					+ "}/";
 		}
+		
+		
+		if(asDTO != null) {
+			asDTO.setAct_feed(0);
+			new Actuator_Status_DAO().SetActuatorStatus(asDTO);
+		}
+		
 		out.print(json);
+		System.out.println(json);
 		// 비교하고
 
 //		db 인젝트
