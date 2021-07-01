@@ -1,3 +1,5 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalDateTime"%>
 <%@page import="com.Model.Domestic_AnimalsDTO"%>
 <%@page import="com.Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
@@ -111,6 +113,18 @@ input[type="submit"], input[type="reset"], input[type="button"], .button
 	border: 2px solid #FFF;
 }
 
+	.dateinput{
+	
+		width:100px !important;
+		font-size: 10px !important;
+	}
+	
+	.prod_input{
+		width:80px !important;
+		height:31px !important;
+		
+	}
+
 .td {
 	border-style: solid;
 	border-width: 3px;
@@ -131,6 +145,7 @@ input[type="submit"], input[type="reset"], input[type="button"], .button
 		response.sendRedirect("Login.jsp");
 	}
 	%>
+
 
 	<div class="wrapper style1"
 		style="height: 700px; padding-top: 1px; padding-bottom: 0px;">
@@ -178,8 +193,7 @@ input[type="submit"], input[type="reset"], input[type="button"], .button
 		<div id="banner" class="container"
 			style="margin-left: 50px; margin-right: 50px; margin-bottom: 145px; padding-right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px; margin-top: 145px;">
 
-			<div
-				style="background-color: #ffff99b2; width: 920px; height: 500px; padding-top: 80px; padding-left: 25px; padding-bottom: 80px; padding-right: 25px; border-radius: 5em;">
+			<div style="background-color: #ffff99b2; width: 920px; height: 500px; padding-top: 80px; padding-left: 25px; padding-bottom: 80px; padding-right: 25px; border-radius: 5em;">
 				<%
 				if (user != null && user.getMb_grade() < 2) {
 				%>
@@ -198,25 +212,92 @@ input[type="submit"], input[type="reset"], input[type="button"], .button
 						<td class="td">1차백신</td>
 						<td class="td">2차백신</td>
 						<td class="td">3차백신</td>
+						<td class="td">비고</td>
 					</tr>
 
 					<%
 					for (int i = 0; i < animalDB.length; i++) {
 					%>
 					<tr class="tr">
-						<td class="td"><%=animalDB[i].getRoom()%></td>
-						<td class="td"><%=animalDB[i].getProduct_cnt()%></td>
-						<td class="td"><%=animalDB[i].getReceving_date()%></td>
-						<td class="td"><%=animalDB[i].getForwarding_date()%></td>
-						<td class="td"><%=animalDB[i].getFir_vaccine()%></td>
-						<td class="td"><%=animalDB[i].getSec_vaccine()%></td>
-						<td class="td"><%=animalDB[i].getThr_vaccine()%></td>
+						<td class="td">
+							<%=animalDB[i].getRoom()%>
+						</td>
+						<td class="td">
+							<%=animalDB[i].getProduct_cnt()%>
+							<input class="prod_input" type="text"  name="Product_cnt">
+						</td>
+						<td class="td">
+							<%=LocalDateTime.parse(
+									animalDB[i].getReceving_date(),
+									DateTimeFormatter.
+									ofPattern("yyyy-MM-dd HH:mm:ss")).
+									format(DateTimeFormatter.
+									ofPattern("yyy-MM-dd"))
+							
+							%>
+				
+							<input class="dateinput" type="date" name="Receving_date">
+						</td>
+						<td class="td">
+							<%=LocalDateTime.parse(
+									animalDB[i].getForwarding_date(),
+									DateTimeFormatter.
+									ofPattern("yyyy-MM-dd HH:mm:ss")).
+									format(DateTimeFormatter.
+									ofPattern("yyy-MM-dd"))
+							
+							%>
+							<input class="dateinput" type="date" name="Forwarding_date">
+						</td>
+						<td class="td">
+							
+							<%=LocalDateTime.parse(
+									animalDB[i].getFir_vaccine(),
+									DateTimeFormatter.
+									ofPattern("yyyy-MM-dd HH:mm:ss")).
+									format(DateTimeFormatter.
+									ofPattern("yyy-MM-dd"))
+							
+							%>
+							<input class="dateinput" type="date" name="Fir_vaccine">
+						</td>
+						<td class="td">
+							<%=LocalDateTime.parse(
+									animalDB[i].getSec_vaccine(),
+									DateTimeFormatter.
+									ofPattern("yyyy-MM-dd HH:mm:ss")).
+									format(DateTimeFormatter.
+									ofPattern("yyy-MM-dd"))
+							
+							%>
+							<input class="dateinput" type="date" name="Sec_vaccine">
+						</td>
+						<td class="td">
+							<%=LocalDateTime.parse(
+									animalDB[i].getThr_vaccine(),
+									DateTimeFormatter.
+									ofPattern("yyyy-MM-dd HH:mm:ss")).
+									format(DateTimeFormatter.
+									ofPattern("yyy-MM-dd"))
+							
+							%>
+							<input class="dateinput" type="date" name="Thr_vaccine">
+						</td>
+						<td class="td"><input
+							type="button" value="수정" class="button fit"
+							onClick="location.href='domesticAnimalsUpdate.do?room=<%=i%>'">
+							<input type="button" value="출하" class="button fit"
+							onClick="location.href='domesticAnimalsFree.do?room=<%=i%>'">
+						</td>
 					</tr>
-					<%}%>
-				<%}%>
+					<%}//end for
+				}//end if%>	
+				
 				</table>
 			</div>
 		</div>
 	</div>
+	
+	
 </body>
 </html>

@@ -27,10 +27,9 @@ public class SetActuatorStatusCon implements Command {
 
 		Actuator_Status_DAO dao = new Actuator_Status_DAO();
 		Actuator_Status_DTO now_Status = dao.GetActuatorStatus();
-		Actuator_Status_DTO status = now_Status;
-
-		status = setStatus(status, num, state);
-		int differentAt = cmpStatus(now_Status, status);
+		Actuator_Status_DTO status = setStatus(now_Status, num, state);
+		// status =
+	
 
 		int cnt = dao.SetActuatorStatus(status);
 
@@ -39,13 +38,13 @@ public class SetActuatorStatusCon implements Command {
 		if (cnt > 0) {
 			Manual_Control_DAO asDAO = new Manual_Control_DAO();
 			Manual_Control_DTO asDTO = asDAO.GetManual();
-			Manual_Control_DTO nextASDTO = changeASDTO(asDTO, differentAt); 
+			Manual_Control_DTO nextASDTO = changeASDTO(asDTO, num);
 
 			int add = 0;
 
-			while (asDAO.SetManual(nextASDTO) > 0) {
+			while (asDAO.SetManual(nextASDTO) < 0) {
 				add++;
-
+				System.out.println("dd?");
 				if (add > 10)
 					break;
 			}
@@ -72,7 +71,7 @@ public class SetActuatorStatusCon implements Command {
 		} else if (num == 7) {
 			a.setAct_humid(state == 0 ? 1 : 0);
 		}
-		
+
 		return a;
 	}
 
@@ -107,23 +106,74 @@ public class SetActuatorStatusCon implements Command {
 	}
 
 	private Manual_Control_DTO changeASDTO(Manual_Control_DTO dto, int num) {
-
-		Manual_Control_DTO rtn = dto;
-
-		if (num == 0)
-			rtn.setAct_feed(1);
-		if (num == 1)
-			rtn.setAct_door(1);
+	
+		Manual_Control_DTO rtn = null;
+		System.out.println(num);
+		System.out.println("=================");
+		if (num == 1) {
+			rtn = new Manual_Control_DTO(1, 
+					dto.getAct_door(), 
+					dto.getAct_absor(),
+					dto.getAct_aircon(),
+					dto.getAct_pump(), 
+					dto.getAct_boil(),
+					dto.getAct_humid(),
+					dto.getEnableGrade());
+		}
 		if (num == 2)
-			rtn.setAct_absor(1);
+			rtn = new Manual_Control_DTO(dto.getAct_feed(), 
+					1, 
+					dto.getAct_absor(),
+					dto.getAct_aircon(),
+					dto.getAct_pump(), 
+					dto.getAct_boil(),
+					dto.getAct_humid(),
+					dto.getEnableGrade());
 		if (num == 3)
-			rtn.setAct_aircon(1);
+			rtn = new Manual_Control_DTO(dto.getAct_feed(), 
+					dto.getAct_door(), 
+					1,
+					dto.getAct_aircon(),
+					dto.getAct_pump(), 
+					dto.getAct_boil(),
+					dto.getAct_humid(),
+					dto.getEnableGrade());
 		if (num == 4)
-			rtn.setAct_pump(1);
+			rtn = new Manual_Control_DTO(dto.getAct_feed(), 
+					dto.getAct_door(), 
+					dto.getAct_absor(),
+					1,
+					dto.getAct_pump(), 
+					dto.getAct_boil(),
+					dto.getAct_humid(),
+					dto.getEnableGrade());
 		if (num == 5)
-			rtn.setAct_boil(1);
+			rtn = new Manual_Control_DTO(dto.getAct_feed(), 
+					dto.getAct_door(), 
+					dto.getAct_absor(),
+					dto.getAct_aircon(),
+					1, 
+					dto.getAct_boil(),
+					dto.getAct_humid(),
+					dto.getEnableGrade());
 		if (num == 6)
-			rtn.setAct_humid(1);
+			rtn = new Manual_Control_DTO(dto.getAct_feed(), 
+					dto.getAct_door(), 
+					dto.getAct_absor(),
+					dto.getAct_aircon(),
+					dto.getAct_pump(), 
+					1,
+					dto.getAct_humid(),
+					dto.getEnableGrade());
+		if (num == 7)
+			rtn = new Manual_Control_DTO(dto.getAct_feed(), 
+					dto.getAct_door(), 
+					dto.getAct_absor(),
+					dto.getAct_aircon(),
+					dto.getAct_pump(), 
+					dto.getAct_boil(),
+					1,
+					dto.getEnableGrade());
 
 		return rtn;
 	}

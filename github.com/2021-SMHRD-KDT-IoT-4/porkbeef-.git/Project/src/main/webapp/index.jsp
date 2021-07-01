@@ -204,10 +204,12 @@ input[type="submit"].fit, input[type="reset"].fit, input[type="button"].fit,
 		</div>
 
 		<%
-		Crawling_Wether_DAO wether_dao = new Crawling_Wether_DAO();
+		
+			Crawling_Wether_DAO wether_dao = new Crawling_Wether_DAO();
 
-		String temp_Pas = wether_dao.Temp_Parser();
-		String weater_Pas = wether_dao.Weather_Parser();
+			String temp_Pas = wether_dao.Temp_Parser();
+			String weater_Pas = wether_dao.Weather_Parser();
+		
 		%>
 
 		<table
@@ -216,7 +218,7 @@ input[type="submit"].fit, input[type="reset"].fit, input[type="button"].fit,
 			<tr>
 				<td>
 					<section class="4u" style="height: 185px; width: 195px;">
-						<a href="#" class="image featured"
+						<a href="automaticControl.do" class="image featured"
 							style="margin-right: 0px; padding-right: 30px;"> <img
 							src="images/pic01.png" class="img"></a>
 						<div class="box"
@@ -228,13 +230,16 @@ input[type="submit"].fit, input[type="reset"].fit, input[type="button"].fit,
 					</section>
 				<td>
 					<section class="4u" style="height: 185px; width: 195px;">
-						<a href="#" class="image featured"
+						<a onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;" href="https://weather.naver.com/" class="image featured"
 							style="margin-right: 0px; padding-right: 30px;"><img
 							src="images/pic02.png" class="img" id="weatherImg"
-							style="margin-bottom: 0px;"></a>
+							style="margin-bottom: 0px;" ></a>
 						<div class="box"
 							style="margin-left: 0px; padding-bottom: 10px; padding-top: 10px; width: 220px;"><%=temp_Pas%><br>
-							<span><%=weater_Pas%></span>
+							<%if(user!=null) {%>
+								<span><%=weater_Pas%></span>
+							<%} %>
+							
 						</div>
 
 					</section>
@@ -243,7 +248,7 @@ input[type="submit"].fit, input[type="reset"].fit, input[type="button"].fit,
 			<tr>
 				<td style="padding-top: 80px;">
 					<section class="4u" style="height: 185px; width: 195px;">
-						<a href="#" class="image featured"
+						<a href="domesticAnimals.do" class="image featured"
 							style="margin-right: 0px; padding-right: 30px;"><img
 							src="images/pic03.png" class="img"></a>
 						<div class="box"
@@ -255,7 +260,7 @@ input[type="submit"].fit, input[type="reset"].fit, input[type="button"].fit,
 
 				<td>
 					<section class="4u" style="height: 185px; width: 195px;">
-						<a href="#" class="image featured"
+						<a href="domesticAnimals.do" class="image featured"
 							style="margin-right: 0px; padding-right: 30px;"><img
 							src="images/pic04.png" class="img"></a>
 						<div class="box"

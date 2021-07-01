@@ -15,7 +15,7 @@ public class Crawling_Wether_DAO {
 
 		try {
 
-			String URL = "https://weather.naver.com/today/05155720"; // 1. 수집 대상 URL
+			String URL = "https://weather.naver.com/"; // 1. 수집 대상 URL
 
 			StringBuilder stringBuilder = null;
  
@@ -42,7 +42,6 @@ public class Crawling_Wether_DAO {
 
 					temp_Data = "" + stringBuilder.append("현재 온도 : ").append(text_val);
 
-					System.out.println(temp_Data); // 확인용 필요없으면 지우기
 				}
 			}
 
