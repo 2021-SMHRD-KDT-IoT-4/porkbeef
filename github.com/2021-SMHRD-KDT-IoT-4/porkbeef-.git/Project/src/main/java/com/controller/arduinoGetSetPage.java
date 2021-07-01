@@ -69,7 +69,7 @@ public class arduinoGetSetPage implements Command {
 		if(eeDTO.getTemp() < acDTO.getAircon_stop()) asDTO.setAct_aircon(0);			
 		if(eeDTO.getTemp() > acDTO.getAircon_start()) asDTO.setAct_aircon(1);
 				
-		if(eeDTO.getGas() < acDTO.getAbsor_stop()) asDTO.setAct_absor(0);	
+		if(eeDTO.getGas() < acDTO.getAbsor_stop()) asDTO.setAct_absor(0);
 		if(eeDTO.getGas() > acDTO.getAbsor_start()) asDTO.setAct_absor(1);
 		
 		if(eeDTO.getHumi() < acDTO.getHumid_stop()) asDTO.setAct_humid(0);	
